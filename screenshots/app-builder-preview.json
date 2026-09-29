@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Year 9 Science Hub",
+      "hasCanvas": false,
+      "bodyTextLen": 4249,
+      "bodyTextHash": "ada48db46fc3a4b26adb987fb9ea2d721d6c00a417de7d2c0dc23f80c1b5b1fd",
+      "bodyTextPrefix": "YEAR 9 PHYSICAL SCIENCE Year 9 Science Hub Notes, quizzes and to",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Year 9 Science Hub",
+      "hasCanvas": false,
+      "bodyTextLen": 4249,
+      "bodyTextHash": "ada48db46fc3a4b26adb987fb9ea2d721d6c00a417de7d2c0dc23f80c1b5b1fd",
+      "bodyTextPrefix": "YEAR 9 PHYSICAL SCIENCE Year 9 Science Hub Notes, quizzes and to",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
