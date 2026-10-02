@@ -1,9 +1,9 @@
 import { i as __toESM, n as __exportAll } from "../_runtime.mjs";
 import { K as require_react, _ as createFileRoute, b as require_jsx_runtime, d as Scripts, f as HeadContent, g as lazyRouteComponent, h as Outlet, m as createRouter, v as createRootRoute, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as TriangleAlert } from "../_libs/lucide-react.mjs";
+import { n as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CLYPWqcT.js
-var router_CLYPWqcT_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DIi7UOPh.js
+var router_DIi7UOPh_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -297,8 +297,8 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-Dxp8H_zE.css";
-var APP_NAME = "Year 9 Science Hub";
+var styles_default = "/assets/styles-BfLRUl2N.css";
+var APP_NAME = "StudyMate";
 var Route$1 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -310,11 +310,11 @@ var Route$1 = createRootRoute({
 			{ title: APP_NAME },
 			{
 				name: "theme-color",
-				content: "#0f172a"
+				content: "#07131c"
 			},
 			{
 				name: "description",
-				content: "Year 9 science revision hub with notes, quizzes, formula tools and a study calendar built from class source packs."
+				content: "StudyMate — Year 9 science notes, labs, quizzes and games built from class packs. Light, energy, electricity and radioactivity."
 			}
 		],
 		links: [
@@ -337,7 +337,7 @@ var Route$1 = createRootRoute({
 			},
 			{
 				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap"
+				href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap"
 			}
 		]
 	}),
@@ -354,7 +354,7 @@ var Route$1 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter = () => import("./routes-pyCLcgdB.mjs");
+var $$splitComponentImporter = () => import("./routes-c1AZDaPA.mjs");
 var rootRouteChildren = { IndexRoute: createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter, "component") }).update({
 	id: "/",
 	path: "/",
@@ -368,4 +368,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getRouter, router_CLYPWqcT_exports as t };
+export { getRouter, router_DIi7UOPh_exports as t };

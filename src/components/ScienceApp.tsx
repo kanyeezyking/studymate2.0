@@ -1,99 +1,115 @@
 import type { ReactNode } from "react";
-import { useState } from "react";
-import { BarChart3, BookOpenText, CalendarDays, FlaskConical, Gamepad2, PenLine } from "lucide-react";
+import { useMemo, useState } from "react";
+import {
+  Atom,
+  BarChart3,
+  BookOpenText,
+  CalendarDays,
+  Gamepad2,
+  PenLine,
+} from "lucide-react";
+import { BrandMark } from "@/components/BrandMark";
 import { CalendarPanel } from "@/components/CalendarPanel";
 import { GamesPanel } from "@/components/GamesPanel";
+import { LabsPanel } from "@/components/LabsPanel";
 import { NotesPanel } from "@/components/NotesPanel";
 import { PerformancePanel } from "@/components/PerformancePanel";
 import { QuizPanel } from "@/components/QuizPanel";
-import { Button } from "@/components/ui/button";
 import { qBank } from "@/lib/science/bank";
 import { noteSections } from "@/data/notes";
 import { cn } from "@/lib/utils";
 
-type MainTab = "science" | "analytics" | "timetable";
-type SubTab = "quizzes" | "material" | "games";
+type Tab = "notes" | "quizzes" | "labs" | "games" | "stats" | "calendar";
+
+const TABS: { id: Tab; label: string; icon: typeof BookOpenText }[] = [
+  { id: "notes", label: "Notes", icon: BookOpenText },
+  { id: "quizzes", label: "Quizzes", icon: PenLine },
+  { id: "labs", label: "Labs", icon: Atom },
+  { id: "games", label: "Games", icon: Gamepad2 },
+  { id: "stats", label: "Progress", icon: BarChart3 },
+  { id: "calendar", label: "Planner", icon: CalendarDays },
+];
 
 export function ScienceApp() {
-  const [main, setMain] = useState<MainTab>("science");
-  const [sub, setSub] = useState<SubTab>("material");
+  const [tab, setTab] = useState<Tab>("notes");
+  const [quizTopic, setQuizTopic] = useState<"all" | string>("all");
+  const counts = useMemo(
+    () => ({ notes: noteSections.length, questions: qBank.length }),
+    [],
+  );
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
-      <header className="mb-8">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Year 9 physical science</p>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">
-          Year 9 Science Hub
-        </h1>
-        <p className="mt-2 max-w-2xl text-muted">
-          Notes, quizzes and tools built from your uploaded packs — energy, light, electricity, radioactivity and the rest of the course.
+    <div className="mx-auto flex min-h-screen max-w-6xl flex-col lg:flex-row">
+      <aside className="hidden w-60 shrink-0 flex-col border-r border-border px-5 py-8 lg:flex">
+        <Wordmark />
+        <p className="mt-3 text-xs leading-relaxed text-muted">
+          Year 9 science companion. Notes, labs and drills from your class packs.
         </p>
-        <p className="mt-3 text-sm text-muted">
-          {noteSections.length} note sections · {qBank.length} quiz questions
+        <nav className="mt-8 flex flex-col gap-1" aria-label="StudyMate">
+          {TABS.map((item) => (
+            <NavBtn
+              key={item.id}
+              active={tab === item.id}
+              onClick={() => setTab(item.id)}
+              icon={<item.icon className="size-4" />}
+              label={item.label}
+            />
+          ))}
+        </nav>
+        <p className="mt-auto pt-8 text-xs text-muted">
+          {counts.notes} note packs · {counts.questions} questions
         </p>
-      </header>
+      </aside>
 
-      <nav className="mb-6 flex gap-3 overflow-x-auto rounded-[var(--radius-lg)] border border-border bg-surface p-3 shadow-lg">
-        <NavBtn
-          active={main === "science"}
-          onClick={() => setMain("science")}
-          icon={<FlaskConical className="size-4" />}
-          label="Science revision"
-        />
-        <NavBtn
-          active={main === "analytics"}
-          onClick={() => setMain("analytics")}
-          icon={<BarChart3 className="size-4" />}
-          label="My performance"
-        />
-        <NavBtn
-          active={main === "timetable"}
-          onClick={() => setMain("timetable")}
-          icon={<CalendarDays className="size-4" />}
-          label="Calendar"
-        />
-      </nav>
+      <div className="min-w-0 flex-1">
+        <header className="sticky top-0 z-20 border-b border-border bg-bg/90 px-4 py-3 backdrop-blur-md lg:hidden">
+          <Wordmark />
+          <nav className="-mx-1 mt-3 flex gap-1 overflow-x-auto pb-1" aria-label="StudyMate">
+            {TABS.map((item) => (
+              <NavBtn
+                key={item.id}
+                active={tab === item.id}
+                onClick={() => setTab(item.id)}
+                icon={<item.icon className="size-4" />}
+                label={item.label}
+                compact
+              />
+            ))}
+          </nav>
+        </header>
 
-      {main === "science" && (
-        <div className="fade-in">
-          <div className="mb-5 flex flex-wrap gap-2">
-            <NavBtn
-              active={sub === "material"}
-              onClick={() => setSub("material")}
-              icon={<BookOpenText className="size-4" />}
-              label="Study notes"
-              compact
-            />
-            <NavBtn
-              active={sub === "quizzes"}
-              onClick={() => setSub("quizzes")}
-              icon={<PenLine className="size-4" />}
-              label="Dynamic quizzes"
-              compact
-            />
-            <NavBtn
-              active={sub === "games"}
-              onClick={() => setSub("games")}
-              icon={<Gamepad2 className="size-4" />}
-              label="Study games"
-              compact
-            />
+        <div className="px-4 py-6 md:px-8 md:py-8">
+          <div className="fade-in" key={tab}>
+            {tab === "notes" && (
+              <NotesPanel
+                onDrill={(topic) => {
+                  setQuizTopic(topic);
+                  setTab("quizzes");
+                }}
+              />
+            )}
+            {tab === "quizzes" && <QuizPanel initialTopic={quizTopic} />}
+            {tab === "labs" && <LabsPanel />}
+            {tab === "games" && <GamesPanel />}
+            {tab === "stats" && <PerformancePanel />}
+            {tab === "calendar" && <CalendarPanel />}
           </div>
-          {sub === "material" && <NotesPanel />}
-          {sub === "quizzes" && <QuizPanel />}
-          {sub === "games" && <GamesPanel />}
         </div>
-      )}
-      {main === "analytics" && (
-        <div className="fade-in">
-          <PerformancePanel />
-        </div>
-      )}
-      {main === "timetable" && (
-        <div className="fade-in">
-          <CalendarPanel />
-        </div>
-      )}
+      </div>
+    </div>
+  );
+}
+
+function Wordmark() {
+  return (
+    <div className="flex items-center gap-3">
+      <BrandMark />
+      <div>
+        <p className="font-display text-xl font-bold leading-none tracking-tight">
+          Study<span className="text-primary">Mate</span>
+        </p>
+        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted">Year 9 science</p>
+      </div>
     </div>
   );
 }
@@ -112,14 +128,19 @@ function NavBtn({
   compact?: boolean;
 }) {
   return (
-    <Button
-      variant={active ? "default" : "outline"}
-      size={compact ? "sm" : "default"}
+    <button
+      type="button"
       onClick={onClick}
-      className={cn("shrink-0", compact && "h-10")}
+      className={cn(
+        "inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-sm)] border text-sm font-semibold transition-colors",
+        compact ? "h-10 px-3" : "h-11 w-full px-3",
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-transparent text-muted hover:border-border hover:bg-surface-hover hover:text-foreground",
+      )}
     >
       {icon}
       {label}
-    </Button>
+    </button>
   );
 }

@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Year 9 Science Hub";
+const APP_NAME = "StudyMate";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -11,11 +11,11 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      { name: "theme-color", content: "#0f172a" },
+      { name: "theme-color", content: "#07131c" },
       {
         name: "description",
         content:
-          "Year 9 science revision hub with notes, quizzes, formula tools and a study calendar built from class source packs.",
+          "StudyMate — Year 9 science notes, labs, quizzes and games built from class packs. Light, energy, electricity and radioactivity.",
       },
     ],
     links: [
@@ -25,7 +25,7 @@ export const Route = createRootRoute({
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap",
       },
     ],
   }),

@@ -1,9 +1,9 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { K as require_react, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as ChartColumn, i as FlaskConical, n as PenLine, o as CalendarDays, r as Gamepad2, s as BookOpenText } from "../_libs/lucide-react.mjs";
+import { _ as ArrowLeft, a as Radiation, c as Layers, d as Clock, f as ChartColumn, g as Atom, h as BookOpenText, i as Sparkles, l as Gamepad2, m as Brain, o as PenLine, p as CalendarDays, r as Spline, s as Lightbulb, t as Zap, u as Crosshair } from "../_libs/lucide-react.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-pyCLcgdB.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-c1AZDaPA.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -29,14 +29,50 @@ function answersMatch(user, accepted) {
 		return userNorm === answer || singular(userNorm) === singular(answer);
 	});
 }
-var buttonVariants = cva("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-md)] text-sm font-semibold transition-[background-color,border-color,color,transform] duration-[var(--motion-quick)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]", {
+function BrandMark({ className }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		viewBox: "0 0 32 32",
+		className: cn("size-9 shrink-0", className),
+		"aria-hidden": "true",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+				width: "32",
+				height: "32",
+				rx: "9",
+				className: "fill-surface"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+				x: "0.75",
+				y: "0.75",
+				width: "30.5",
+				height: "30.5",
+				rx: "8.25",
+				className: "fill-none stroke-border",
+				strokeWidth: "1.5"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+				d: "M8 22.5c3.2-6.4 5.1-9.6 8-13.5 2.9 3.9 4.8 7.1 8 13.5",
+				className: "fill-none stroke-primary",
+				strokeWidth: "2.2",
+				strokeLinecap: "round"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+				cx: "16",
+				cy: "12.2",
+				r: "2.1",
+				className: "fill-secondary"
+			})
+		]
+	});
+}
+var buttonVariants = cva("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-sm)] text-sm font-semibold transition-[background-color,border-color,color,transform] duration-[var(--motion-quick)] ease-[var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]", {
 	variants: {
 		variant: {
 			default: "bg-primary text-primary-foreground border border-primary hover:bg-primary-hover",
 			action: "bg-secondary text-secondary-foreground border border-secondary hover:bg-secondary-hover",
-			outline: "bg-surface-hover text-foreground border border-border hover:bg-primary-hover hover:text-primary-foreground hover:border-primary-hover",
+			outline: "bg-surface-hover text-foreground border border-border hover:border-primary hover:text-foreground",
 			ghost: "bg-transparent text-muted border border-transparent hover:bg-surface-hover hover:text-foreground",
-			danger: "bg-transparent text-danger border border-danger hover:bg-danger hover:text-white"
+			danger: "bg-transparent text-danger border border-danger hover:bg-danger hover:text-danger-foreground"
 		},
 		size: {
 			default: "h-11 px-5",
@@ -57,6 +93,31 @@ function Button({ className, variant, size, ...props }) {
 			size
 		}), className),
 		...props
+	});
+}
+function Panel({ children, className }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: cn("rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-border)] md:p-7", className),
+		children
+	});
+}
+function PanelTitle({ kicker, title, description }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+		className: "mb-6",
+		children: [
+			kicker ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-[11px] font-semibold uppercase tracking-[0.18em] text-primary",
+				children: kicker
+			}) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "mt-1 text-2xl font-bold tracking-tight text-foreground",
+				children: title
+			}),
+			description ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 max-w-2xl text-sm text-muted",
+				children: description
+			}) : null
+		]
 	});
 }
 var TOPIC_ORDER = [
@@ -272,8 +333,8 @@ function CalendarPanel() {
 	const minutesPerDay = 840;
 	const trackHeight = 720;
 	const pxPerMinute = trackHeight / minutesPerDay;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-lg)] border border-border bg-surface p-4 shadow-lg md:p-6",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+		className: "p-4 md:p-6",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-center justify-between gap-3",
@@ -455,7 +516,7 @@ function CalendarPanel() {
 				})
 			}),
 			modal && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4",
+				className: "fixed inset-0 z-50 flex items-center justify-center bg-bg/80 p-4",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "w-full max-w-md rounded-[var(--radius-lg)] border border-border bg-surface p-6",
 					children: [
@@ -608,6 +669,677 @@ function CalendarPanel() {
 			})
 		]
 	});
+}
+function rand(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function makeItem() {
+	const kind = rand(0, 3);
+	if (kind === 0) {
+		const m = rand(2, 12);
+		const h = rand(1, 8);
+		return {
+			q: `A ${m} kg mass is lifted ${h} m. g = 10 N/kg. What is the GPE gained?`,
+			a: m * 10 * h,
+			unit: "J",
+			hint: "Ep = mgh"
+		};
+	}
+	if (kind === 1) {
+		const m = rand(2, 10);
+		const v = rand(2, 8);
+		return {
+			q: `A ${m} kg object moves at ${v} m/s. What is its kinetic energy?`,
+			a: .5 * m * v * v,
+			unit: "J",
+			hint: "Ek = ½mv²"
+		};
+	}
+	if (kind === 2) {
+		const f = rand(5, 20) * 10;
+		const s = rand(2, 12);
+		return {
+			q: `A force of ${f} N moves an object ${s} m in the direction of the force. How much work is done?`,
+			a: f * s,
+			unit: "J",
+			hint: "W = F × s"
+		};
+	}
+	const input = rand(2, 10) * 50;
+	const useful = rand(1, 8) * 20;
+	const u = Math.min(useful, input);
+	return {
+		q: `A device takes in ${input} J and usefully transfers ${u} J. What is the efficiency as a percentage?`,
+		a: u / input * 100,
+		unit: "%",
+		hint: "efficiency = useful ÷ input × 100"
+	};
+}
+function closeEnough(user, answer) {
+	const n = Number(user);
+	if (!Number.isFinite(n)) return false;
+	return Math.abs(n - answer) < .51 || Math.abs(n - answer) / Math.max(1, Math.abs(answer)) < .02;
+}
+function FormulaBlitz() {
+	const [items, setItems] = (0, import_react.useState)([]);
+	const [i, setI] = (0, import_react.useState)(0);
+	const [typed, setTyped] = (0, import_react.useState)("");
+	const [score, setScore] = (0, import_react.useState)(0);
+	const [feedback, setFeedback] = (0, import_react.useState)(null);
+	const current = items[i];
+	const finished = items.length > 0 && i >= items.length;
+	function start() {
+		setItems(Array.from({ length: 8 }, () => makeItem()));
+		setI(0);
+		setTyped("");
+		setScore(0);
+		setFeedback(null);
+	}
+	function submit() {
+		if (!current || feedback) return;
+		const ok = closeEnough(typed, current.a);
+		setFeedback(ok ? "ok" : "no");
+		if (ok) setScore((s) => s + 1);
+		saveQuizResults([{
+			cat: "energy",
+			q: current.q,
+			correct: ok
+		}]);
+	}
+	function next() {
+		setI((n) => n + 1);
+		setTyped("");
+		setFeedback(null);
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "text-sm text-muted",
+		children: "Eight quick calculations from the energy pack. Units are given — type the number only."
+	}), items.length === 0 || finished ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-5",
+		children: [finished && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mb-4 rounded-[var(--radius-sm)] border border-border bg-bg px-4 py-3 text-sm",
+			children: [
+				"Score ",
+				score,
+				" / ",
+				items.length,
+				". ",
+				score >= 7 ? "A-range accuracy." : "Redo until the formulas feel automatic."
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "action",
+			onClick: start,
+			children: "Start formula blitz"
+		})]
+	}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-5",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-xs font-semibold uppercase tracking-wide text-primary",
+				children: [
+					i + 1,
+					" / ",
+					items.length,
+					" · ",
+					current.hint
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 text-lg font-semibold",
+				children: current.q
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-4 flex flex-wrap gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						className: "h-11 w-40 rounded-[var(--radius-md)] border border-border bg-bg px-3 font-mono text-sm",
+						value: typed,
+						inputMode: "decimal",
+						placeholder: "Number",
+						onChange: (e) => setTyped(e.target.value),
+						onKeyDown: (e) => {
+							if (e.key === "Enter") feedback ? next() : submit();
+						}
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "self-center text-sm text-muted",
+						children: current.unit
+					}),
+					!feedback ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "action",
+						onClick: submit,
+						children: "Check"
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						variant: "action",
+						onClick: next,
+						children: "Next"
+					})
+				]
+			}),
+			feedback && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: cn("mt-3 text-sm font-semibold", feedback === "ok" ? "text-success" : "text-danger"),
+				children: feedback === "ok" ? "Correct." : `Answer: ${current.a} ${current.unit}`
+			})
+		]
+	})] });
+}
+var MATCH_SETS = [
+	{
+		id: "energy",
+		label: "Energy",
+		pairs: [
+			{
+				term: "Kinetic energy",
+				def: "Energy of a moving object, Ek = ½mv²"
+			},
+			{
+				term: "GPE",
+				def: "Stored energy due to height, Ep = mgh"
+			},
+			{
+				term: "Work",
+				def: "Energy transferred when a force moves an object, W = Fs"
+			},
+			{
+				term: "Efficiency",
+				def: "Useful energy out ÷ total energy in × 100%"
+			},
+			{
+				term: "Sankey diagram",
+				def: "Arrow diagram where width shows energy amount"
+			},
+			{
+				term: "Conservation of energy",
+				def: "Energy cannot be created or destroyed, only transferred"
+			}
+		]
+	},
+	{
+		id: "light",
+		label: "Light",
+		pairs: [
+			{
+				term: "Law of reflection",
+				def: "Angle of incidence equals angle of reflection"
+			},
+			{
+				term: "Normal",
+				def: "A line drawn at 90° to a surface at the point of incidence"
+			},
+			{
+				term: "Refraction",
+				def: "Bending of light when it changes speed between media"
+			},
+			{
+				term: "TIR",
+				def: "All light reflects inside a denser medium when i ≥ critical angle"
+			},
+			{
+				term: "Dispersion",
+				def: "White light splitting into ROYGBIV because colours slow by different amounts"
+			},
+			{
+				term: "Additive primaries",
+				def: "Red, green and blue light mix to make white"
+			}
+		]
+	},
+	{
+		id: "emspectrum",
+		label: "EM spectrum",
+		pairs: [
+			{
+				term: "Radio waves",
+				def: "Longest wavelength EM waves; radio and TV"
+			},
+			{
+				term: "Microwaves",
+				def: "Heat food by vibrating water molecules; also radar"
+			},
+			{
+				term: "Infrared",
+				def: "Heat radiation; remotes and thermal cameras"
+			},
+			{
+				term: "Ultraviolet",
+				def: "Can cause sunburn and skin cancer; also makes vitamin D"
+			},
+			{
+				term: "X-rays",
+				def: "Pass through soft tissue; used to image bones"
+			},
+			{
+				term: "Gamma rays",
+				def: "Highest energy EM waves; from radioactive nuclei"
+			}
+		]
+	},
+	{
+		id: "electricity",
+		label: "Electricity",
+		pairs: [
+			{
+				term: "Current",
+				def: "Flow of charge, measured in amps"
+			},
+			{
+				term: "Voltage",
+				def: "Energy per coulomb / push on charges, measured in volts"
+			},
+			{
+				term: "Resistance",
+				def: "Opposition to current, measured in ohms"
+			},
+			{
+				term: "Series circuit",
+				def: "One path; current the same everywhere; voltage shared"
+			},
+			{
+				term: "Parallel circuit",
+				def: "Branches; voltage the same across each; current splits"
+			},
+			{
+				term: "Ammeter",
+				def: "Measures current and is placed in series"
+			}
+		]
+	},
+	{
+		id: "radioactivity",
+		label: "Radioactivity",
+		pairs: [
+			{
+				term: "Isotope",
+				def: "Same number of protons, different number of neutrons"
+			},
+			{
+				term: "Alpha particle",
+				def: "Helium nucleus; stopped by paper; highly ionising"
+			},
+			{
+				term: "Beta particle",
+				def: "Fast electron; stopped by aluminium"
+			},
+			{
+				term: "Gamma ray",
+				def: "EM wave; most penetrating; needs thick lead or concrete"
+			},
+			{
+				term: "Half-life",
+				def: "Time for half the radioactive nuclei in a sample to decay"
+			},
+			{
+				term: "Ionising radiation",
+				def: "Radiation that can knock electrons off atoms and damage DNA"
+			}
+		]
+	}
+];
+function MatchGame() {
+	const [setId, setSetId] = (0, import_react.useState)(MATCH_SETS[0].id);
+	const [left, setLeft] = (0, import_react.useState)([]);
+	const [right, setRight] = (0, import_react.useState)([]);
+	const [pick, setPick] = (0, import_react.useState)(null);
+	const [matched, setMatched] = (0, import_react.useState)([]);
+	const [wrong, setWrong] = (0, import_react.useState)([]);
+	const [misses, setMisses] = (0, import_react.useState)(0);
+	const pack = MATCH_SETS.find((s) => s.id === setId);
+	const done = left.length > 0 && matched.length === left.length;
+	function start() {
+		const cards = pack.pairs.flatMap((p, i) => [{
+			id: `t-${i}`,
+			text: p.term,
+			pair: String(i),
+			side: "term"
+		}, {
+			id: `d-${i}`,
+			text: p.def,
+			pair: String(i),
+			side: "def"
+		}]);
+		setLeft(shuffle(cards.filter((c) => c.side === "term")));
+		setRight(shuffle(cards.filter((c) => c.side === "def")));
+		setPick(null);
+		setMatched([]);
+		setWrong([]);
+		setMisses(0);
+	}
+	function tap(card) {
+		if (matched.includes(card.id) || done) return;
+		if (!pick) {
+			setPick(card);
+			return;
+		}
+		if (pick.id === card.id) {
+			setPick(null);
+			return;
+		}
+		if (pick.pair === card.pair && pick.side !== card.side) {
+			setMatched((m) => [
+				...m,
+				pick.id,
+				card.id
+			]);
+			setPick(null);
+			setWrong([]);
+		} else {
+			setMisses((n) => n + 1);
+			setWrong([pick.id, card.id]);
+			setPick(null);
+			window.setTimeout(() => setWrong([]), 450);
+		}
+	}
+	function save() {
+		if (!done) return;
+		const cat = pack.id === "mix" ? "physics" : pack.id;
+		saveQuizResults(pack.pairs.map((p) => ({
+			cat,
+			q: `Match: ${p.term}`,
+			correct: true
+		})));
+	}
+	const remaining = (0, import_react.useMemo)(() => left.filter((c) => !matched.includes(c.id)).length, [left, matched]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex flex-wrap gap-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+			className: "h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm",
+			value: setId,
+			onChange: (e) => setSetId(e.target.value),
+			children: MATCH_SETS.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+				value: s.id,
+				children: s.label
+			}, s.id))
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "action",
+			onClick: start,
+			children: "Deal pairs"
+		})]
+	}), left.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "mt-6 text-sm text-muted",
+		children: "Deal a set, then tap one term and its definition."
+	}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mt-4 text-sm text-muted",
+			children: [
+				remaining,
+				" pairs left · ",
+				misses,
+				" misses"
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 grid gap-3 md:grid-cols-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Column, {
+				cards: left,
+				pick,
+				matched,
+				wrong,
+				onTap: tap
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Column, {
+				cards: right,
+				pick,
+				matched,
+				wrong,
+				onTap: tap
+			})]
+		}),
+		done && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4 rounded-[var(--radius-sm)] border border-success/40 bg-success/10 px-4 py-3 text-sm",
+			children: [
+				"Set complete with ",
+				misses,
+				" misses.",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "action",
+					size: "sm",
+					className: "ml-3",
+					onClick: save,
+					children: "Save as revision"
+				})
+			]
+		})
+	] })] });
+}
+function Column({ cards, pick, matched, wrong, onTap }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid gap-2",
+		children: cards.map((c) => {
+			const isOn = pick?.id === c.id;
+			const isMatch = matched.includes(c.id);
+			const isWrong = wrong.includes(c.id);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				disabled: isMatch,
+				onClick: () => onTap(c),
+				className: cn("min-h-12 rounded-[var(--radius-sm)] border px-3 py-3 text-left text-sm font-semibold", isMatch && "border-success bg-success/15 text-success", isWrong && "border-danger bg-danger/15", isOn && "border-primary bg-primary/15", !isOn && !isMatch && !isWrong && "border-border bg-bg hover:border-primary"),
+				children: c.text
+			}, c.id);
+		})
+	});
+}
+var BANK = [
+	{
+		q: "Stopped by a sheet of paper or skin",
+		a: "Alpha"
+	},
+	{
+		q: "Helium nucleus (2 protons + 2 neutrons)",
+		a: "Alpha"
+	},
+	{
+		q: "Most ionising of the three",
+		a: "Alpha"
+	},
+	{
+		q: "Deflected towards a negative plate (positive charge)",
+		a: "Alpha"
+	},
+	{
+		q: "Fast electron emitted from the nucleus",
+		a: "Beta"
+	},
+	{
+		q: "Stopped by a few millimetres of aluminium",
+		a: "Beta"
+	},
+	{
+		q: "Deflected towards a positive plate",
+		a: "Beta"
+	},
+	{
+		q: "A neutron changing into a proton produces this",
+		a: "Beta"
+	},
+	{
+		q: "Electromagnetic wave from the nucleus",
+		a: "Gamma"
+	},
+	{
+		q: "Most penetrating — needs thick lead or concrete",
+		a: "Gamma"
+	},
+	{
+		q: "No charge, so not deflected by electric fields",
+		a: "Gamma"
+	},
+	{
+		q: "Least ionising of the three",
+		a: "Gamma"
+	}
+];
+var OPTIONS = [
+	"Alpha",
+	"Beta",
+	"Gamma"
+];
+function RadiationRush() {
+	const [queue, setQueue] = (0, import_react.useState)([]);
+	const [i, setI] = (0, import_react.useState)(0);
+	const [score, setScore] = (0, import_react.useState)(0);
+	const [picked, setPicked] = (0, import_react.useState)(null);
+	const current = queue[i];
+	const finished = queue.length > 0 && i >= queue.length;
+	function start() {
+		setQueue(shuffle(BANK));
+		setI(0);
+		setScore(0);
+		setPicked(null);
+	}
+	function choose(opt) {
+		if (!current || picked) return;
+		const ok = opt === current.a;
+		setPicked(opt);
+		if (ok) setScore((s) => s + 1);
+		saveQuizResults([{
+			cat: "radioactivity",
+			q: current.q,
+			correct: ok
+		}]);
+		window.setTimeout(() => {
+			setI((n) => n + 1);
+			setPicked(null);
+		}, 550);
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "text-sm text-muted",
+		children: "Twelve properties. Tap alpha, beta or gamma as fast as you can without guessing."
+	}), queue.length === 0 || finished ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-5",
+		children: [finished && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mb-4 rounded-[var(--radius-sm)] border border-border bg-bg px-4 py-3 text-sm",
+			children: [
+				score,
+				" / ",
+				queue.length,
+				". Aim for 11+ before the test."
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "action",
+			onClick: start,
+			children: "Start radiation rush"
+		})]
+	}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-5",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-xs font-semibold uppercase tracking-wide text-primary",
+				children: [
+					i + 1,
+					" / ",
+					queue.length,
+					" · score ",
+					score
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 min-h-16 text-lg font-semibold",
+				children: current.q
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-4 grid gap-2 sm:grid-cols-3",
+				children: OPTIONS.map((opt) => {
+					let tone = "border-border bg-bg";
+					if (picked) {
+						if (opt === current.a) tone = "border-success bg-success text-success-foreground";
+						else if (opt === picked) tone = "border-danger bg-danger text-danger-foreground";
+					}
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: () => choose(opt),
+						className: cn("h-12 rounded-[var(--radius-sm)] border text-sm font-bold", tone),
+						children: opt
+					}, opt);
+				})
+			})
+		]
+	})] });
+}
+var ORDER = [
+	"Radio",
+	"Microwave",
+	"Infrared",
+	"Visible",
+	"Ultraviolet",
+	"X-ray",
+	"Gamma"
+];
+function SpectrumSort() {
+	const [items, setItems] = (0, import_react.useState)(() => shuffle([...ORDER]));
+	const [checked, setChecked] = (0, import_react.useState)(false);
+	const correct = items.every((v, i) => v === ORDER[i]);
+	function move(i, dir) {
+		if (checked) return;
+		const j = i + dir;
+		if (j < 0 || j >= items.length) return;
+		const next = [...items];
+		const a = next[i];
+		next[i] = next[j];
+		next[j] = a;
+		setItems(next);
+	}
+	function mark() {
+		setChecked(true);
+		saveQuizResults([{
+			cat: "emspectrum",
+			q: "Order the EM spectrum from longest wavelength to shortest",
+			correct
+		}]);
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Longest wavelength at the top (radio), shortest at the bottom (gamma). Energy increases as you go down."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+			className: "mt-4 grid gap-2",
+			children: items.map((name, i) => {
+				const right = checked && name === ORDER[i];
+				const bad = checked && name !== ORDER[i];
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+					className: cn("flex items-center gap-2 rounded-[var(--radius-sm)] border bg-bg px-3 py-2", right && "border-success", bad && "border-danger", !checked && "border-border"),
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "w-6 font-mono text-xs text-muted",
+							children: i + 1
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "flex-1 text-sm font-semibold",
+							children: name
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							size: "sm",
+							disabled: checked || i === 0,
+							onClick: () => move(i, -1),
+							children: "Up"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							size: "sm",
+							disabled: checked || i === items.length - 1,
+							onClick: () => move(i, 1),
+							children: "Down"
+						})
+					]
+				}, name);
+			})
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-4 flex flex-wrap gap-2",
+			children: !checked ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "action",
+				onClick: mark,
+				children: "Check order"
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: cn("self-center text-sm font-semibold", correct ? "text-success" : "text-danger"),
+				children: correct ? "Perfect — that is the exam order." : "Not yet. Radio → microwave → IR → visible → UV → X-ray → gamma."
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				onClick: () => {
+					setItems(shuffle([...ORDER]));
+					setChecked(false);
+				},
+				children: "Shuffle again"
+			})] })
+		})
+	] });
 }
 var existingQuestions = [
 	{
@@ -5541,24 +6273,217 @@ function questionsFor(topic) {
 	if (topic === "all") return qBank;
 	return qBank.filter((q) => q.cat === topic);
 }
-function GamesPanel() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "text-xl font-bold",
-				children: "Study games"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-2 text-sm text-muted",
-				children: "Flashcards and a 60-second sprint using the same question bank as the quizzes."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-6 grid gap-4 lg:grid-cols-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Flashcards, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpeedRound, {})]
-			})
-		]
+function WeakSpot() {
+	const weak = (0, import_react.useMemo)(() => {
+		const stats = loadQuestionStats();
+		const ranked = qBank.map((q) => {
+			const s = stats[q.q];
+			return {
+				q,
+				rate: s && s.t > 0 ? s.c / s.t : null,
+				t: s?.t ?? 0
+			};
+		}).filter((x) => x.t > 0 && (x.rate ?? 1) < .75).sort((a, b) => (a.rate ?? 0) - (b.rate ?? 0) || b.t - a.t);
+		const unseen = qBank.filter((q) => !stats[q.q] || stats[q.q].t === 0);
+		return shuffle([...ranked.map((r) => r.q), ...shuffle(unseen).slice(0, 6)]).slice(0, 10);
+	}, []);
+	const [items, setItems] = (0, import_react.useState)(weak);
+	const [i, setI] = (0, import_react.useState)(0);
+	const [typed, setTyped] = (0, import_react.useState)("");
+	const [choice, setChoice] = (0, import_react.useState)(null);
+	const [revealed, setRevealed] = (0, import_react.useState)(false);
+	const [score, setScore] = (0, import_react.useState)(0);
+	const current = items[i];
+	const finished = items.length > 0 && i >= items.length;
+	function mark(answer) {
+		if (!current || revealed) return;
+		const ok = answersMatch(answer, current.a);
+		setRevealed(true);
+		if (ok) setScore((s) => s + 1);
+		saveQuizResults([{
+			cat: current.cat,
+			q: current.q,
+			correct: ok
+		}]);
+	}
+	function next() {
+		setI((n) => n + 1);
+		setTyped("");
+		setChoice(null);
+		setRevealed(false);
+	}
+	if (items.length === 0) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "text-sm text-muted",
+		children: "No weak spots yet. Sit a quiz or a game first — StudyMate will pull the questions you miss into this drill."
 	});
+	if (finished) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+		className: "text-sm",
+		children: [
+			score,
+			" / ",
+			items.length,
+			" on your weakest mix."
+		]
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+		variant: "action",
+		className: "mt-4",
+		onClick: () => {
+			setItems(shuffle(weak));
+			setI(0);
+			setScore(0);
+			setRevealed(false);
+		},
+		children: "Drill again"
+	})] });
+	const accepted = Array.isArray(current.a) ? current.a[0] : current.a;
+	const ok = revealed && answersMatch(choice || typed, current.a);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "text-xs font-semibold uppercase tracking-wide text-primary",
+			children: [
+				i + 1,
+				" / ",
+				items.length,
+				" · ",
+				catNames[current.cat] ?? current.cat
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-2 text-lg font-semibold",
+			children: current.q
+		}),
+		current.type === "mcq" && current.options ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-4 grid gap-2",
+			children: current.options.map((opt) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				className: "w-full justify-start",
+				variant: revealed && opt === accepted ? "action" : "outline",
+				onClick: () => {
+					setChoice(opt);
+					mark(opt);
+				},
+				children: opt
+			}, opt))
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4 flex flex-wrap gap-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+				className: "h-11 min-w-48 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm",
+				value: typed,
+				onChange: (e) => setTyped(e.target.value),
+				disabled: revealed,
+				placeholder: "Type the answer"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "action",
+				onClick: () => mark(typed),
+				disabled: revealed,
+				children: "Check"
+			})]
+		}),
+		revealed && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: `text-sm font-semibold ${ok ? "text-success" : "text-danger"}`,
+				children: ok ? "Correct" : `Accepted: ${accepted}`
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				className: "mt-3",
+				variant: "action",
+				onClick: next,
+				children: "Next"
+			})]
+		})
+	] });
+}
+var GAMES = [
+	{
+		id: "weak",
+		title: "Weak-spot drill",
+		blurb: "Questions you miss, plus ones you have not tried.",
+		icon: Crosshair
+	},
+	{
+		id: "match",
+		title: "Term match",
+		blurb: "Pair definitions until the language is automatic.",
+		icon: Layers
+	},
+	{
+		id: "spectrum",
+		title: "Spectrum order",
+		blurb: "Radio to gamma. The sequence that always appears in exams.",
+		icon: Sparkles
+	},
+	{
+		id: "blitz",
+		title: "Formula blitz",
+		blurb: "GPE, KE, work and efficiency — numbers until they stick.",
+		icon: Zap
+	},
+	{
+		id: "radiation",
+		title: "Radiation rush",
+		blurb: "Alpha, beta or gamma from a property. No hesitation.",
+		icon: Radiation
+	},
+	{
+		id: "flash",
+		title: "Flashcards",
+		blurb: "Think, then reveal. Same bank as the quizzes.",
+		icon: Brain
+	},
+	{
+		id: "sprint",
+		title: "60-second sprint",
+		blurb: "As many multiple-choice as you can. Build speed.",
+		icon: Clock
+	}
+];
+function GamesPanel({ initialGame = null }) {
+	const [game, setGame] = (0, import_react.useState)(initialGame);
+	const active = GAMES.find((g) => g.id === game);
+	if (!active) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+		kicker: "Practice",
+		title: "Study games",
+		description: "Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid gap-3 sm:grid-cols-2",
+		children: GAMES.map((item) => {
+			const Icon = item.icon;
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+				type: "button",
+				onClick: () => setGame(item.id),
+				className: "rounded-[var(--radius-md)] border border-border bg-bg p-5 text-left transition-colors hover:border-primary",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-5 text-primary" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "mt-3 text-lg font-bold",
+						children: item.title
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-sm text-muted",
+						children: item.blurb
+					})
+				]
+			}, item.id);
+		})
+	})] });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			variant: "ghost",
+			className: "mb-4 px-2",
+			onClick: () => setGame(null),
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All games"]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+			title: active.title,
+			description: active.blurb
+		}),
+		game === "flash" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Flashcards, {}),
+		game === "sprint" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpeedRound, {}),
+		game === "match" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MatchGame, {}),
+		game === "spectrum" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpectrumSort, {}),
+		game === "blitz" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormulaBlitz, {}),
+		game === "radiation" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadiationRush, {}),
+		game === "weak" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeakSpot, {})
+	] });
 }
 function Flashcards() {
 	const [topic, setTopic] = (0, import_react.useState)("all");
@@ -5566,97 +6491,74 @@ function Flashcards() {
 	const [i, setI] = (0, import_react.useState)(0);
 	const [show, setShow] = (0, import_react.useState)(false);
 	function start() {
-		const pool = shuffle(questionsFor(topic)).slice(0, 15);
-		setCards(pool);
+		setCards(shuffle(questionsFor(topic)).slice(0, 15));
 		setI(0);
 		setShow(false);
 	}
 	const card = cards[i];
 	const answer = card ? Array.isArray(card.a) ? card.a[0] : card.a : "";
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-md)] border border-border bg-bg p-5",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex flex-wrap gap-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+			className: "h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm",
+			value: topic,
+			onChange: (e) => setTopic(e.target.value),
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+				value: "all",
+				children: "All topics"
+			}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+				value: id,
+				children: catNames[id]
+			}, id))]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "action",
+			onClick: start,
+			children: "Deal pack"
+		})]
+	}), card ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+		type: "button",
+		onClick: () => setShow((s) => !s),
+		className: "mt-4 flex min-h-[200px] w-full flex-col items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg px-6 py-8 text-center",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-				className: "font-bold",
-				children: "Flashcard trainer"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-1 text-sm text-muted",
-				children: "Think of the answer, then reveal it."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-4 flex flex-wrap gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-					className: "h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm",
-					value: topic,
-					onChange: (e) => setTopic(e.target.value),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-						value: "all",
-						children: "All topics"
-					}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-						value: id,
-						children: catNames[id]
-					}, id))]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					variant: "action",
-					onClick: start,
-					children: "Start"
-				})]
-			}),
-			card ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-				type: "button",
-				onClick: () => setShow((s) => !s),
-				className: "mt-4 flex min-h-[200px] w-full flex-col items-center justify-center rounded-[var(--radius-lg)] border border-border bg-surface px-6 py-8 text-center",
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+				className: "text-xs font-bold uppercase tracking-wider text-primary",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "text-xs font-bold uppercase tracking-wider text-primary",
-						children: [
-							show ? "Answer" : "Question",
-							" · ",
-							i + 1,
-							"/",
-							cards.length
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "mt-3 text-lg font-bold",
-						children: show ? answer : card.q
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "mt-3 text-sm text-secondary",
-						children: show ? "Click to hide" : "Click to reveal"
-					})
+					show ? "Answer" : "Question",
+					" · ",
+					i + 1,
+					"/",
+					cards.length
 				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 flex gap-2",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						onClick: () => {
-							setI((i - 1 + cards.length) % cards.length);
-							setShow(false);
-						},
-						children: "Previous"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "action",
-						onClick: () => setShow((s) => !s),
-						children: "Reveal / hide"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						className: "ml-auto",
-						onClick: () => {
-							setI((i + 1) % cards.length);
-							setShow(false);
-						},
-						children: "Next"
-					})
-				]
-			})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-6 text-sm text-muted",
-				children: "Press start to deal a pack of up to 15 cards."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "mt-3 text-lg font-bold",
+				children: show ? answer : card.q
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "mt-3 text-sm text-secondary",
+				children: show ? "Hide" : "Reveal"
 			})
 		]
-	});
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-3 flex gap-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			onClick: () => {
+				setI((i - 1 + cards.length) % cards.length);
+				setShow(false);
+			},
+			children: "Previous"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			className: "ml-auto",
+			onClick: () => {
+				setI((i + 1) % cards.length);
+				setShow(false);
+			},
+			children: "Next"
+		})]
+	})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "mt-6 text-sm text-muted",
+		children: "Deal a pack of up to 15 cards from the question bank."
+	})] });
 }
 function SpeedRound() {
 	const [time, setTime] = (0, import_react.useState)(60);
@@ -5685,12 +6587,11 @@ function SpeedRound() {
 		setPool(rest.length ? rest : shuffle(questionsFor("all").filter((q) => q.type === "mcq")));
 	}
 	function start() {
-		const nextPool = shuffle(questionsFor("all").filter((q) => q.type === "mcq"));
 		setTime(60);
 		setScore(0);
 		setStreak(0);
 		setActive(true);
-		deal(nextPool);
+		deal(shuffle(questionsFor("all").filter((q) => q.type === "mcq")));
 	}
 	function answer(opt) {
 		if (!active || !current) return;
@@ -5700,71 +6601,1536 @@ function SpeedRound() {
 		} else setStreak(0);
 		window.setTimeout(() => deal(pool), 160);
 	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-md)] border border-border bg-bg p-5",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-				className: "font-bold",
-				children: "60-second science sprint"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-1 text-sm text-muted",
-				children: "Answer as many multiple-choice questions as you can."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-4 grid grid-cols-3 gap-2 text-sm",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
-						label: "Time",
-						value: String(time)
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
-						label: "Score",
-						value: String(score)
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
-						label: "Streak",
-						value: String(streak)
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				variant: "action",
-				className: "mt-4",
-				onClick: start,
-				children: "Start 60-second round"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-4",
-				children: active && current ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "min-h-16 text-base font-bold",
-					children: current.q
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "mt-3 grid gap-2",
-					children: (current.options ?? []).map((opt) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						className: "w-full justify-start",
-						onClick: () => answer(opt),
-						children: opt
-					}, opt))
-				})] }) : !active && time === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					className: "rounded-[var(--radius-sm)] border border-success bg-success/15 p-3 text-success",
-					children: ["Time. Final score: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: score })]
-				}) : null
-			})
-		]
-	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid grid-cols-3 gap-2 text-sm",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
+					label: "Time",
+					value: String(time)
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
+					label: "Score",
+					value: String(score)
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat$1, {
+					label: "Streak",
+					value: String(streak)
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "action",
+			className: "mt-4",
+			onClick: start,
+			children: "Start 60-second round"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-4",
+			children: active && current ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "min-h-16 text-base font-bold",
+				children: current.q
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 grid gap-2",
+				children: (current.options ?? []).map((opt) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					className: "w-full justify-start",
+					onClick: () => answer(opt),
+					children: opt
+				}, opt))
+			})] }) : !active && time === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "rounded-[var(--radius-sm)] border border-success/40 bg-success/10 p-3 text-success",
+				children: ["Time. Final score: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: score })]
+			}) : null
+		})
+	] });
 }
 function Stat$1({ label, value }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex items-center justify-between rounded-[var(--radius-sm)] bg-surface-hover px-3 py-2",
+		className: "flex items-center justify-between rounded-[var(--radius-sm)] bg-bg px-3 py-2",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 			className: "text-muted",
 			children: label
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-			className: "font-mono",
+			className: "font-mono tabular-nums",
 			children: value
 		})]
 	});
+}
+var R = 6;
+function CircuitLab() {
+	const [mode, setMode] = (0, import_react.useState)("series");
+	const [bulbs, setBulbs] = (0, import_react.useState)(2);
+	const [volts, setVolts] = (0, import_react.useState)(12);
+	const n = bulbs;
+	const result = (0, import_react.useMemo)(() => {
+		if (mode === "series") {
+			const totalR = n * R;
+			const I = volts / totalR;
+			return {
+				I,
+				Ibranch: Array.from({ length: n }, () => I),
+				Vbulb: Array.from({ length: n }, () => I * R),
+				totalR
+			};
+		}
+		const Ibranch = volts / R;
+		return {
+			I: Ibranch * n,
+			Ibranch: Array.from({ length: n }, () => Ibranch),
+			Vbulb: Array.from({ length: n }, () => volts),
+			totalR: R / n
+		};
+	}, [
+		mode,
+		n,
+		volts
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Each lamp is modelled as 6 Ω. Watch how current and voltage split when you change the layout."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-4 flex flex-wrap gap-2",
+			children: ["series", "parallel"].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: () => setMode(m),
+				className: cn("h-10 rounded-full border px-4 text-xs font-semibold capitalize", mode === m ? "border-primary bg-primary text-primary-foreground" : "border-border bg-bg text-muted"),
+				children: m
+			}, m))
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+			className: "mt-4 block text-xs font-semibold text-muted",
+			children: [
+				"Battery ",
+				volts,
+				" V",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "range",
+					min: 3,
+					max: 24,
+					value: volts,
+					onChange: (e) => setVolts(Number(e.target.value)),
+					className: "mt-2 w-full accent-primary"
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+			className: "mt-3 block text-xs font-semibold text-muted",
+			children: [
+				"Lamps ",
+				n,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "range",
+					min: 1,
+					max: 4,
+					value: n,
+					onChange: (e) => setBulbs(Number(e.target.value)),
+					className: "mt-2 w-full accent-primary"
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: "0 0 420 220",
+			className: "mt-4 w-full rounded-[var(--radius-md)] border border-border bg-bg",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					x: "28",
+					y: "88",
+					width: "22",
+					height: "44",
+					className: "fill-surface-hover stroke-primary"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "39",
+					y: "80",
+					textAnchor: "middle",
+					className: "fill-muted",
+					fontSize: "10",
+					children: [volts, " V"]
+				}),
+				mode === "series" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SeriesSvg, {
+					n,
+					glow: result.I
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ParallelSvg, {
+					n,
+					glow: result.Ibranch[0] ?? 0
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4 grid gap-2 sm:grid-cols-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$2, {
+					label: "Supply current",
+					value: `${result.I.toFixed(2)} A`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$2, {
+					label: "Voltage on each lamp",
+					value: `${result.Vbulb[0]?.toFixed(2)} V`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$2, {
+					label: "Total resistance",
+					value: `${result.totalR.toFixed(2)} Ω`
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-3 text-sm text-muted",
+			children: mode === "series" ? "Series: one path, so current is the same everywhere and the battery voltage is shared." : "Parallel: each branch gets the full battery voltage. Current splits, then adds back at the supply."
+		})
+	] });
+}
+function SeriesSvg({ n, glow }) {
+	const start = 70;
+	const gap = 310 / (n + 1);
+	const opacity = Math.min(1, glow / 1.2);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+		d: "M50 110 H380 V150 H50 Z",
+		fill: "none",
+		stroke: "var(--color-primary)",
+		strokeWidth: "2.5"
+	}), Array.from({ length: n }).map((_, i) => {
+		const x = start + gap * (i + 1);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lamp, {
+			x,
+			y: 110,
+			on: opacity,
+			label: `L${i + 1}`
+		}, i);
+	})] });
+}
+function ParallelSvg({ n, glow }) {
+	const top = 56;
+	const bot = 164;
+	const span = 108;
+	const opacity = Math.min(1, glow / 2);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+			d: "M50 110 H90",
+			fill: "none",
+			stroke: "var(--color-primary)",
+			strokeWidth: "2.5"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+			d: "M370 110 H390 V150 H50 V110",
+			fill: "none",
+			stroke: "var(--color-primary)",
+			strokeWidth: "2.5"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+			x1: "90",
+			y1: top,
+			x2: "90",
+			y2: bot,
+			stroke: "var(--color-primary)",
+			strokeWidth: "2.5"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+			x1: "370",
+			y1: top,
+			x2: "370",
+			y2: bot,
+			stroke: "var(--color-primary)",
+			strokeWidth: "2.5"
+		}),
+		Array.from({ length: n }).map((_, i) => {
+			const y = n === 1 ? 110 : top + span * i / (n - 1);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+				x1: "90",
+				y1: y,
+				x2: "370",
+				y2: y,
+				stroke: "var(--color-primary)",
+				strokeWidth: "2.5"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lamp, {
+				x: 230,
+				y,
+				on: opacity,
+				label: `L${i + 1}`
+			})] }, i);
+		})
+	] });
+}
+function Lamp({ x, y, on, label }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+		cx: x,
+		cy: y,
+		r: "12",
+		fill: `color-mix(in oklab, var(--color-warning) ${Math.round(on * 80)}%, var(--color-surface))`,
+		stroke: "var(--color-warning)",
+		strokeWidth: "2"
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+		x,
+		y: y + 28,
+		textAnchor: "middle",
+		className: "fill-muted",
+		fontSize: "10",
+		children: label
+	})] });
+}
+function Fact$2({ label, value }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-[var(--radius-sm)] border border-border bg-bg px-3 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-[11px] uppercase tracking-wide text-muted",
+			children: label
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "font-mono text-lg font-bold tabular-nums text-primary",
+			children: value
+		})]
+	});
+}
+var N = 64;
+function seedAtoms() {
+	return Array.from({ length: N }, () => true);
+}
+function DecayLab() {
+	const [atoms, setAtoms] = (0, import_react.useState)(() => seedAtoms());
+	const [steps, setSteps] = (0, import_react.useState)(0);
+	const [half, setHalf] = (0, import_react.useState)(5730);
+	const remaining = atoms.filter(Boolean).length;
+	const expected = (0, import_react.useMemo)(() => N * Math.pow(.5, steps), [steps]);
+	function step() {
+		setAtoms((prev) => prev.map((alive) => alive ? Math.random() >= .5 : false));
+		setSteps((s) => s + 1);
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Each nucleus has a 50% chance of decaying each half-life. You cannot predict which atom, only the fraction left."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-4 grid grid-cols-8 gap-1.5 rounded-[var(--radius-md)] border border-border bg-bg p-3",
+			children: atoms.map((alive, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: `aspect-square rounded-full ${alive ? "bg-primary" : "bg-surface-hover"}`,
+				title: alive ? "Undecayed" : "Decayed"
+			}, i))
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4 grid gap-2 sm:grid-cols-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$1, {
+					label: "Half-lives passed",
+					value: String(steps)
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$1, {
+					label: "Nuclei left",
+					value: `${remaining} / ${N}`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact$1, {
+					label: "Expected remaining",
+					value: expected.toFixed(1)
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+			className: "mt-4 block text-xs font-semibold text-muted",
+			children: ["Half-life (years, carbon-14 is 5730)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+				className: "mt-1 h-11 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm sm:max-w-xs",
+				value: half,
+				onChange: (e) => setHalf(Number(e.target.value) || 0)
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mt-2 text-sm text-muted",
+			children: [
+				"Elapsed time ≈ ",
+				steps * half,
+				" years. Remaining ≈ initial × (1/2)",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("sup", { children: "n" }),
+				"."
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-4 flex flex-wrap gap-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "action",
+				onClick: step,
+				children: "Advance one half-life"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				onClick: () => {
+					setAtoms(seedAtoms());
+					setSteps(0);
+				},
+				children: "Reset sample"
+			})]
+		})
+	] });
+}
+function Fact$1({ label, value }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-[var(--radius-sm)] border border-border bg-bg px-3 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-[11px] uppercase tracking-wide text-muted",
+			children: label
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "font-mono text-lg font-bold tabular-nums text-primary",
+			children: value
+		})]
+	});
+}
+var MODES = [
+	{
+		id: "spectrum",
+		label: "Spectrum"
+	},
+	{
+		id: "reflection",
+		label: "Reflection"
+	},
+	{
+		id: "refraction",
+		label: "Refraction"
+	},
+	{
+		id: "colour",
+		label: "Colour"
+	}
+];
+var BANDS = [
+	{
+		id: "radio",
+		label: "Radio",
+		cls: "bg-em-radio",
+		uses: "Longest wavelength. Radio, TV, some mobiles. Passes through the body with little absorption."
+	},
+	{
+		id: "micro",
+		label: "Microwave",
+		cls: "bg-em-micro",
+		uses: "Heat food by vibrating water molecules. Radar and satellite links. Short beams diffract very little."
+	},
+	{
+		id: "ir",
+		label: "Infrared",
+		cls: "bg-em-ir",
+		uses: "Heat, remotes, thermal cameras. All objects emit IR — hotter objects emit more."
+	},
+	{
+		id: "vis",
+		label: "Visible",
+		cls: "bg-[linear-gradient(90deg,#ef4444,#f59e0b,#22c55e,#3b82f6,#8b5cf6)]",
+		uses: "The only EM radiation human eyes detect (~390–780 nm). Red sits next to IR; violet next to UV."
+	},
+	{
+		id: "uv",
+		label: "UV",
+		cls: "bg-em-uv",
+		uses: "Vitamin D, fluorescence, security inks. Overexposure: sunburn, ageing, skin cancer."
+	},
+	{
+		id: "x",
+		label: "X-ray",
+		cls: "bg-em-x",
+		uses: "Bone and security imaging from an X-ray tube. Lead shielding for radiographers."
+	},
+	{
+		id: "gamma",
+		label: "Gamma",
+		cls: "bg-em-gamma",
+		uses: "From radioactive nuclei. Tracers, sterilising, radiotherapy. Shortest λ, highest energy."
+	}
+];
+var MEDIA = [
+	{
+		id: "air",
+		n: 1,
+		label: "Air 1.00"
+	},
+	{
+		id: "water",
+		n: 1.33,
+		label: "Water 1.33"
+	},
+	{
+		id: "glass",
+		n: 1.5,
+		label: "Glass 1.50"
+	},
+	{
+		id: "diamond",
+		n: 2.42,
+		label: "Diamond 2.42"
+	}
+];
+function LightLab({ initial = "spectrum" }) {
+	const [mode, setMode] = (0, import_react.useState)(initial);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mt-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "flex flex-wrap gap-2",
+			children: MODES.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: () => setMode(m.id),
+				className: cn("h-10 rounded-full border px-4 text-xs font-semibold", mode === m.id ? "border-primary bg-primary text-primary-foreground" : "border-border bg-bg text-muted hover:text-foreground"),
+				children: m.label
+			}, m.id))
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "fade-in mt-5",
+			children: [
+				mode === "spectrum" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpectrumBench, {}),
+				mode === "reflection" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReflectionBench, {}),
+				mode === "refraction" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefractionBench, {}),
+				mode === "colour" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ColourBench, {})
+			]
+		})]
+	});
+}
+function SpectrumBench() {
+	const [id, setId] = (0, import_react.useState)("vis");
+	const [nm, setNm] = (0, import_react.useState)(550);
+	const band = BANDS.find((b) => b.id === id);
+	const rgb = wavelengthToCss(nm);
+	const period = 10 + (nm - 380) / 18;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Tap a band. Energy and hazard increase to the right. Drag the visible-light slider to see wavelength, colour and wave shape."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-3 flex overflow-hidden rounded-[var(--radius-md)] border border-border",
+			children: BANDS.map((b) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: () => setId(b.id),
+				className: cn("h-16 min-w-0 flex-1 px-1 text-[10px] font-bold text-foreground sm:text-xs", b.cls, id === b.id && "ring-2 ring-inset ring-foreground"),
+				children: b.label
+			}, b.id))
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-2 flex justify-between text-[10px] uppercase tracking-wide text-muted",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Long λ · low f · lower energy" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Short λ · high f · higher energy" })]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-3 rounded-[var(--radius-sm)] border border-border bg-bg p-4 text-sm",
+			children: band.uses
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-5 rounded-[var(--radius-md)] border border-border bg-bg p-4",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm font-semibold",
+						children: "Visible wavelength"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "font-mono text-sm tabular-nums text-primary",
+						children: [nm, " nm"]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "range",
+					min: 390,
+					max: 700,
+					value: nm,
+					onChange: (e) => {
+						const v = Number(e.target.value);
+						setNm(v);
+						setId("vis");
+					},
+					className: "mt-3 w-full accent-primary",
+					"aria-label": "Visible wavelength in nanometres"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-3 overflow-hidden rounded-[var(--radius-sm)] border border-border",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+						viewBox: "0 0 420 80",
+						className: "h-24 w-full",
+						"aria-hidden": "true",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							width: "420",
+							height: "80",
+							className: "fill-surface"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+							className: "wave-drift",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WavePath, {
+								period,
+								color: rgb
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+								transform: "translate(48,0)",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WavePath, {
+									period,
+									color: rgb
+								})
+							})]
+						})]
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-3 text-sm text-muted",
+					children: "Red photons have less energy than violet. In a prism, red is bent least and violet most — that is dispersion."
+				})
+			]
+		})
+	] });
+}
+function WavePath({ period, color }) {
+	const d = (0, import_react.useMemo)(() => {
+		const pts = [];
+		for (let x = 0; x <= 468; x += 2) {
+			const y = 40 + 26 * Math.sin(x / period * Math.PI * 2);
+			pts.push(`${x === 0 ? "M" : "L"}${x} ${y.toFixed(2)}`);
+		}
+		return pts.join(" ");
+	}, [period]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+		d,
+		fill: "none",
+		stroke: color,
+		strokeWidth: "2.4",
+		strokeLinecap: "round"
+	});
+}
+function ReflectionBench() {
+	const [iDeg, setIDeg] = (0, import_react.useState)(42);
+	const i = iDeg * Math.PI / 180;
+	const ox = 200;
+	const oy = 188;
+	const len = 150;
+	const ix = ox - Math.sin(i) * len;
+	const iy = oy - Math.cos(i) * len;
+	const rx = ox + Math.sin(i) * len;
+	const ry = oy - Math.cos(i) * len;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Angles are measured from the normal, not the mirror. Drag the slider — i always equals r."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: "0 0 400 240",
+			className: "mt-3 w-full overflow-visible rounded-[var(--radius-md)] border border-border bg-bg",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					x: "24",
+					y: "188",
+					width: "352",
+					height: "10",
+					rx: "2",
+					className: "fill-surface-hover stroke-border"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+					x: "200",
+					y: "228",
+					textAnchor: "middle",
+					className: "fill-muted",
+					fontSize: "11",
+					children: "Plane mirror"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: "200",
+					y1: "36",
+					x2: "200",
+					y2: "188",
+					className: "stroke-muted",
+					strokeDasharray: "4 5",
+					strokeWidth: "1.5"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+					x: "208",
+					y: "50",
+					className: "fill-muted",
+					fontSize: "11",
+					children: "Normal"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: ix,
+					y1: iy,
+					x2: ox,
+					y2: oy,
+					stroke: "var(--color-primary)",
+					strokeWidth: "3"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+					points: arrowHead(ix, iy, ox, oy),
+					fill: "var(--color-primary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: ox,
+					y1: oy,
+					x2: rx,
+					y2: ry,
+					stroke: "var(--color-secondary)",
+					strokeWidth: "3"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+					points: arrowHead(ox, oy, rx, ry),
+					fill: "var(--color-secondary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Arc, {
+					cx: ox,
+					cy: oy,
+					r: 42,
+					start: -Math.PI / 2,
+					sweep: -i,
+					color: "var(--color-primary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Arc, {
+					cx: ox,
+					cy: oy,
+					r: 42,
+					start: -Math.PI / 2,
+					sweep: i,
+					color: "var(--color-secondary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: 142,
+					y: 130,
+					fill: "var(--color-primary)",
+					fontSize: "13",
+					fontWeight: "700",
+					children: [
+						"i ",
+						iDeg,
+						"°"
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: 228,
+					y: 130,
+					fill: "var(--color-secondary)",
+					fontSize: "13",
+					fontWeight: "700",
+					children: [
+						"r ",
+						iDeg,
+						"°"
+					]
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+			className: "mt-4 block text-xs font-semibold text-muted",
+			children: ["Angle of incidence", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+				type: "range",
+				min: 8,
+				max: 80,
+				value: iDeg,
+				onChange: (e) => setIDeg(Number(e.target.value)),
+				className: "mt-2 w-full accent-primary"
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mt-3 rounded-[var(--radius-sm)] border border-border bg-bg px-4 py-3 font-mono text-sm text-primary",
+			children: [
+				"i = r = ",
+				iDeg,
+				"°"
+			]
+		})
+	] });
+}
+function RefractionBench() {
+	const [from, setFrom] = (0, import_react.useState)("air");
+	const [to, setTo] = (0, import_react.useState)("glass");
+	const [iDeg, setIDeg] = (0, import_react.useState)(35);
+	const n1 = MEDIA.find((m) => m.id === from).n;
+	const n2 = MEDIA.find((m) => m.id === to).n;
+	const i = iDeg * Math.PI / 180;
+	const arg = n1 / n2 * Math.sin(i);
+	const tir = arg > 1;
+	const r = tir ? i : Math.asin(Math.min(1, arg));
+	const rDeg = Math.round(r * 180 / Math.PI);
+	const crit = n1 > n2 ? Math.round(Math.asin(n2 / n1) * 180 / Math.PI) : null;
+	const ox = 200;
+	const oy = 120;
+	const len = 108;
+	const ix = ox - Math.sin(i) * len;
+	const iy = oy - Math.cos(i) * len;
+	const tx = tir ? ox + Math.sin(i) * len : ox + Math.sin(r) * len;
+	const ty = tir ? oy - Math.cos(i) * len : oy + Math.cos(r) * len;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-sm text-muted",
+			children: "Light bends towards the normal when it slows (into a denser medium) and away when it speeds up."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 grid gap-2 sm:grid-cols-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Select, {
+				label: "From",
+				value: from,
+				onChange: setFrom
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Select, {
+				label: "Into",
+				value: to,
+				onChange: setTo
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: "0 0 400 240",
+			className: "mt-3 w-full rounded-[var(--radius-md)] border border-border",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					width: "400",
+					height: "120",
+					className: "fill-surface"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					y: "120",
+					width: "400",
+					height: "120",
+					className: "fill-surface-hover"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "12",
+					y: "20",
+					className: "fill-muted",
+					fontSize: "11",
+					children: ["n = ", n1.toFixed(2)]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "12",
+					y: "228",
+					className: "fill-muted",
+					fontSize: "11",
+					children: ["n = ", n2.toFixed(2)]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: "200",
+					y1: "16",
+					x2: "200",
+					y2: "224",
+					className: "stroke-muted",
+					strokeDasharray: "4 5",
+					strokeWidth: "1.5"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: ix,
+					y1: iy,
+					x2: ox,
+					y2: oy,
+					stroke: "var(--color-primary)",
+					strokeWidth: "3"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+					x1: ox,
+					y1: oy,
+					x2: tx,
+					y2: ty,
+					stroke: tir ? "var(--color-warning)" : "var(--color-secondary)",
+					strokeWidth: "3"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+					x: "208",
+					y: "36",
+					className: "fill-muted",
+					fontSize: "11",
+					children: "Normal"
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+			className: "mt-4 block text-xs font-semibold text-muted",
+			children: [
+				"Angle of incidence ",
+				iDeg,
+				"°",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					type: "range",
+					min: 1,
+					max: 85,
+					value: iDeg,
+					onChange: (e) => setIDeg(Number(e.target.value)),
+					className: "mt-2 w-full accent-primary"
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 grid gap-2 sm:grid-cols-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact, {
+					label: "i",
+					value: `${iDeg}°`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact, {
+					label: tir ? "TIR" : "r",
+					value: tir ? "reflects" : `${rDeg}°`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Fact, {
+					label: "Critical angle",
+					value: crit === null ? "n/a (n1 ≤ n2)" : `${crit}°`
+				})
+			]
+		}),
+		tir ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-3 rounded-[var(--radius-sm)] border border-warning/40 bg-warning/10 px-4 py-3 text-sm text-warning",
+			children: "Total internal reflection — i is greater than the critical angle, so the ray cannot leave the denser medium."
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-3 text-sm text-muted",
+			children: "Snell: n₁ sin i = n₂ sin r. Optical fibres and periscope prisms use TIR."
+		})
+	] });
+}
+function ColourBench() {
+	const [r, setR] = (0, import_react.useState)(255);
+	const [g, setG] = (0, import_react.useState)(0);
+	const [b, setB] = (0, import_react.useState)(0);
+	const [reflects, setReflects] = (0, import_react.useState)({
+		r: true,
+		g: false,
+		b: false
+	});
+	const mix = `rgb(${r} ${g} ${b})`;
+	const object = `rgb(${reflects.r ? 220 : 18} ${reflects.g ? 220 : 18} ${reflects.b ? 220 : 18})`;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "grid gap-4 lg:grid-cols-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "rounded-[var(--radius-md)] border border-border bg-bg p-4",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "font-semibold",
+					children: "Additive mixing (lights)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted",
+					children: "Red + green + blue lights make white. This is how screens work."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-4 h-28 rounded-[var(--radius-sm)] border border-border",
+					style: { background: mix }
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Slider, {
+					label: "Red",
+					value: r,
+					onChange: setR
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Slider, {
+					label: "Green",
+					value: g,
+					onChange: setG
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Slider, {
+					label: "Blue",
+					value: b,
+					onChange: setB
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-3 flex flex-wrap gap-2",
+					children: [
+						{
+							label: "Yellow",
+							rr: 255,
+							gg: 255,
+							bb: 0
+						},
+						{
+							label: "Cyan",
+							rr: 0,
+							gg: 255,
+							bb: 255
+						},
+						{
+							label: "Magenta",
+							rr: 255,
+							gg: 0,
+							bb: 255
+						},
+						{
+							label: "White",
+							rr: 255,
+							gg: 255,
+							bb: 255
+						}
+					].map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: "h-9 rounded-full border border-border px-3 text-xs font-semibold hover:border-primary",
+						onClick: () => {
+							setR(p.rr);
+							setG(p.gg);
+							setB(p.bb);
+						},
+						children: p.label
+					}, p.label))
+				})
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "rounded-[var(--radius-md)] border border-border bg-bg p-4",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "font-semibold",
+					children: "Object colour (white light)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-1 text-sm text-muted",
+					children: "A red object reflects red and absorbs the rest. Tick the wavelengths this surface reflects."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-4 h-28 rounded-[var(--radius-sm)] border border-border",
+					style: { background: object }
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-4 grid gap-2",
+					children: [
+						"r",
+						"g",
+						"b"
+					].map((k) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "flex h-11 items-center gap-3 rounded-[var(--radius-sm)] border border-border px-3 text-sm",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								type: "checkbox",
+								checked: reflects[k],
+								onChange: () => setReflects((s) => ({
+									...s,
+									[k]: !s[k]
+								})),
+								className: "size-4 accent-primary"
+							}),
+							"Reflects ",
+							k === "r" ? "red" : k === "g" ? "green" : "blue"
+						]
+					}, k))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-3 text-sm text-muted",
+					children: "White reflects all three. Black absorbs all three. Filters work by subtracting (absorbing) colours from white light."
+				})
+			]
+		})]
+	});
+}
+function Select({ label, value, onChange }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+		className: "text-xs font-semibold text-muted",
+		children: [label, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+			className: "mt-1 h-11 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm text-foreground",
+			value,
+			onChange: (e) => onChange(e.target.value),
+			children: MEDIA.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+				value: m.id,
+				children: m.label
+			}, m.id))
+		})]
+	});
+}
+function Slider({ label, value, onChange }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+		className: "mt-3 block text-xs font-semibold text-muted",
+		children: [
+			label,
+			" ",
+			value,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+				type: "range",
+				min: 0,
+				max: 255,
+				value,
+				onChange: (e) => onChange(Number(e.target.value)),
+				className: "mt-2 w-full accent-primary"
+			})
+		]
+	});
+}
+function Fact({ label, value }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-[var(--radius-sm)] border border-border bg-bg px-3 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-[11px] uppercase tracking-wide text-muted",
+			children: label
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "font-mono text-lg font-bold tabular-nums text-primary",
+			children: value
+		})]
+	});
+}
+function Arc({ cx, cy, r, start, sweep, color }) {
+	const x1 = cx + r * Math.cos(start);
+	const y1 = cy + r * Math.sin(start);
+	const x2 = cx + r * Math.cos(start + sweep);
+	const y2 = cy + r * Math.sin(start + sweep);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+		d: `M ${x1} ${y1} A ${r} ${r} 0 ${Math.abs(sweep) > Math.PI ? 1 : 0} ${sweep > 0 ? 1 : 0} ${x2} ${y2}`,
+		fill: "none",
+		stroke: color,
+		strokeWidth: "2"
+	});
+}
+function arrowHead(x1, y1, x2, y2) {
+	const angle = Math.atan2(y2 - y1, x2 - x1);
+	const s = 8;
+	const ax = x2 - Math.cos(angle) * 4;
+	const ay = y2 - Math.sin(angle) * 4;
+	return `${`${ax + Math.cos(angle + 2.5) * s},${ay + Math.sin(angle + 2.5) * s}`} ${`${x2},${y2}`} ${`${ax + Math.cos(angle - 2.5) * s},${ay + Math.sin(angle - 2.5) * s}`}`;
+}
+function wavelengthToCss(nm) {
+	let r = 0;
+	let g = 0;
+	let b = 0;
+	if (nm >= 380 && nm < 440) {
+		r = -(nm - 440) / 60;
+		b = 1;
+	} else if (nm >= 440 && nm < 490) {
+		g = (nm - 440) / 50;
+		b = 1;
+	} else if (nm >= 490 && nm < 510) {
+		g = 1;
+		b = -(nm - 510) / 20;
+	} else if (nm >= 510 && nm < 580) {
+		r = (nm - 510) / 70;
+		g = 1;
+	} else if (nm >= 580 && nm < 645) {
+		r = 1;
+		g = -(nm - 645) / 65;
+	} else if (nm >= 645 && nm <= 780) r = 1;
+	let factor = 1;
+	if (nm >= 380 && nm < 420) factor = .3 + .7 * (nm - 380) / 40;
+	else if (nm > 700 && nm <= 780) factor = .3 + .7 * (780 - nm) / 80;
+	const to = (v) => Math.round(Math.min(1, Math.max(0, v)) * factor * 255);
+	return `rgb(${to(r)} ${to(g)} ${to(b)})`;
+}
+function SankeyLab() {
+	const [input, setInput] = (0, import_react.useState)(100);
+	const [useful, setUseful] = (0, import_react.useState)(40);
+	const waste = Math.max(0, input - useful);
+	const eff = input === 0 ? 0 : useful / input * 100;
+	const usefulH = (0, import_react.useMemo)(() => input === 0 ? 0 : useful / input * 160, [input, useful]);
+	const wasteH = 160 - usefulH;
+	function clampUseful(v) {
+		setUseful(Math.min(input, Math.max(0, v)));
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "text-sm text-muted",
+		children: "Arrow width stands for energy. The left bar is input; it splits into useful output and wasted energy."
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mt-4 grid gap-4 md:grid-cols-[1fr_180px]",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: "0 0 420 220",
+			className: "w-full rounded-[var(--radius-md)] border border-border bg-bg",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					x: "24",
+					y: "30",
+					width: "70",
+					height: "160",
+					rx: "8",
+					fill: "var(--color-primary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "59",
+					y: "20",
+					textAnchor: "middle",
+					className: "fill-muted",
+					fontSize: "11",
+					children: [
+						"Input ",
+						input,
+						" J"
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+					d: `M94 30 C 200 30, 220 ${30 + (160 - usefulH) / 2}, 330 ${30 + (160 - usefulH) / 2} L 330 ${30 + (160 - usefulH) / 2 + usefulH} C 220 ${30 + (160 - usefulH) / 2 + usefulH}, 200 190, 94 190 Z`,
+					fill: "var(--color-secondary)",
+					opacity: "0.9"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+					x: "330",
+					y: 30 + (160 - usefulH) / 2,
+					width: "66",
+					height: Math.max(usefulH, 4),
+					rx: "8",
+					fill: "var(--color-secondary)"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "363",
+					y: "20",
+					textAnchor: "middle",
+					className: "fill-muted",
+					fontSize: "11",
+					children: [
+						"Useful ",
+						useful,
+						" J"
+					]
+				}),
+				waste > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+					d: `M94 190 C 160 190, 170 206, 230 206 L 230 ${206 + Math.max(wasteH * .2, 8)} C 160 ${206 + Math.max(wasteH * .2, 8)}, 150 190, 94 190 Z`,
+					fill: "var(--color-warning)",
+					opacity: "0.85"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: "250",
+					y: "214",
+					className: "fill-warning",
+					fontSize: "11",
+					children: [
+						"Waste ",
+						waste,
+						" J"
+					]
+				})] })
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid gap-3 content-start",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "text-xs font-semibold text-muted",
+					children: ["Input energy (J)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						className: "mt-1 h-11 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm",
+						value: input,
+						inputMode: "numeric",
+						onChange: (e) => {
+							const v = Number(e.target.value) || 0;
+							setInput(v);
+							if (useful > v) setUseful(v);
+						}
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "text-xs font-semibold text-muted",
+					children: ["Useful energy (J)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						className: "mt-1 h-11 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm",
+						value: useful,
+						inputMode: "numeric",
+						onChange: (e) => clampUseful(Number(e.target.value) || 0)
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rounded-[var(--radius-sm)] border border-border bg-bg px-3 py-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-[11px] uppercase tracking-wide text-muted",
+						children: "Efficiency"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "font-mono text-2xl font-bold tabular-nums text-primary",
+						children: [eff.toFixed(1), "%"]
+					})]
+				})
+			]
+		})]
+	})] });
+}
+function EnergyTools({ mode = "all" }) {
+	const [mass, setMass] = (0, import_react.useState)("5");
+	const [height, setHeight] = (0, import_react.useState)("2");
+	const [g, setG] = (0, import_react.useState)("10");
+	const [speed, setSpeed] = (0, import_react.useState)("4");
+	const [force, setForce] = (0, import_react.useState)("1000");
+	const [dist, setDist] = (0, import_react.useState)("50");
+	const [useful, setUseful] = (0, import_react.useState)("10");
+	const [input, setInput] = (0, import_react.useState)("100");
+	const gpe = (0, import_react.useMemo)(() => n(mass) * n(g) * n(height), [
+		mass,
+		g,
+		height
+	]);
+	const ke = (0, import_react.useMemo)(() => .5 * n(mass) * n(speed) ** 2, [mass, speed]);
+	const work = (0, import_react.useMemo)(() => n(force) * n(dist), [force, dist]);
+	const eff = (0, import_react.useMemo)(() => n(input) === 0 ? 0 : n(useful) / n(input) * 100, [useful, input]);
+	const waste = (0, import_react.useMemo)(() => n(input) - n(useful), [input, useful]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mt-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+				className: "text-lg font-bold",
+				children: mode === "efficiency" ? "Efficiency calculator" : "Formula calculator"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm text-muted",
+				children: "Numbers match the class worksheets. Use g = 10 unless a question says 9.81."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 grid gap-3 md:grid-cols-2",
+				children: [(mode === "all" || mode === "efficiency") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+					title: "Efficiency",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+							label: "Useful energy (J)",
+							value: useful,
+							onChange: setUseful
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+							label: "Input energy (J)",
+							value: input,
+							onChange: setInput
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
+							label: "Efficiency",
+							value: `${eff.toFixed(1)}%`
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
+							label: "Wasted",
+							value: `${waste} J`
+						})
+					]
+				}), mode === "all" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+						title: "GPE = mgh",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Mass (kg)",
+								value: mass,
+								onChange: setMass
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "g (N/kg)",
+								value: g,
+								onChange: setG
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Height (m)",
+								value: height,
+								onChange: setHeight
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
+								label: "Ep",
+								value: `${gpe.toFixed(2)} J`
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+						title: "KE = ½mv²",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Mass (kg)",
+								value: mass,
+								onChange: setMass
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Speed (m/s)",
+								value: speed,
+								onChange: setSpeed
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
+								label: "Ek",
+								value: `${ke.toFixed(2)} J`
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
+						title: "Work = F × s",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Force (N)",
+								value: force,
+								onChange: setForce
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+								label: "Distance (m)",
+								value: dist,
+								onChange: setDist
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
+								label: "W",
+								value: `${work.toFixed(2)} J`
+							})
+						]
+					})
+				] })]
+			})
+		]
+	});
+}
+function n(v) {
+	const x = Number(v);
+	return Number.isFinite(x) ? x : 0;
+}
+function Card({ title, children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-[var(--radius-md)] border border-border bg-surface p-4",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mb-3 font-bold",
+			children: title
+		}), children]
+	});
+}
+function Field({ label, value, onChange }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+		className: "mb-2 block text-xs text-muted",
+		children: [label, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+			className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm text-foreground",
+			value,
+			onChange: (e) => onChange(e.target.value),
+			inputMode: "decimal"
+		})]
+	});
+}
+function Result({ label, value }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+		className: "mt-2 text-sm",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+			className: "text-muted",
+			children: [label, ": "]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+			className: "font-mono font-bold text-primary",
+			children: value
+		})]
+	});
+}
+function HalfLifeTool() {
+	const [initial, setInitial] = (0, import_react.useState)("100");
+	const [half, setHalf] = (0, import_react.useState)("5730");
+	const [time, setTime] = (0, import_react.useState)("17190");
+	const [unit, setUnit] = (0, import_react.useState)("years");
+	const n = (0, import_react.useMemo)(() => {
+		const h = Number(half);
+		const t = Number(time);
+		if (!h || h <= 0) return 0;
+		return t / h;
+	}, [half, time]);
+	const remaining = (0, import_react.useMemo)(() => {
+		const start = Number(initial);
+		if (!Number.isFinite(start)) return 0;
+		return start * Math.pow(.5, n);
+	}, [initial, n]);
+	const fraction = (0, import_react.useMemo)(() => Math.pow(.5, n), [n]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mt-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+				className: "text-lg font-bold",
+				children: "Half-life calculator"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-sm text-muted",
+				children: [
+					"remaining = initial × (1/2)",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("sup", { children: "n" }),
+					" where n is the number of half-lives."
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 grid gap-3 sm:grid-cols-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "text-xs text-muted",
+						children: ["Starting amount", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
+							value: initial,
+							onChange: (e) => setInitial(e.target.value)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "text-xs text-muted",
+						children: ["Half-life", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
+							value: half,
+							onChange: (e) => setHalf(e.target.value)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "text-xs text-muted",
+						children: ["Elapsed time", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
+							value: time,
+							onChange: (e) => setTime(e.target.value)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: "text-xs text-muted",
+						children: ["Unit (label only)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
+							value: unit,
+							onChange: (e) => setUnit(e.target.value)
+						})]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-4 grid gap-2 sm:grid-cols-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+						label: "Half-lives (n)",
+						value: n.toFixed(2)
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+						label: "Fraction left",
+						value: fraction.toPrecision(3)
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+						label: `Amount left`,
+						value: `${remaining.toPrecision(4)} (${unit})`
+					})
+				]
+			})
+		]
+	});
+}
+function Stat({ label, value }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-xs text-muted",
+			children: label
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "font-mono text-lg font-bold text-primary",
+			children: value
+		})]
+	});
+}
+var LABS = [
+	{
+		id: "light",
+		title: "Light lab",
+		blurb: "Spectrum, reflection, refraction, TIR and colour mixing — the visual bench.",
+		icon: Lightbulb
+	},
+	{
+		id: "circuit",
+		title: "Circuit bench",
+		blurb: "Series vs parallel. See current and voltage split as you add lamps.",
+		icon: Zap
+	},
+	{
+		id: "sankey",
+		title: "Energy & Sankey",
+		blurb: "GPE, KE, work, efficiency and a live Sankey split.",
+		icon: Spline
+	},
+	{
+		id: "decay",
+		title: "Half-life sample",
+		blurb: "Watch 64 nuclei decay. Compare the random sample to the (1/2)^n model.",
+		icon: Atom
+	}
+];
+function LabsPanel({ initialLab = null }) {
+	const [lab, setLab] = (0, import_react.useState)(initialLab);
+	const active = LABS.find((l) => l.id === lab);
+	if (!active) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+		kicker: "Interactive",
+		title: "Labs",
+		description: "Build the picture in your head before the test. Start with the light bench — then circuits, energy and decay."
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid gap-3 sm:grid-cols-2",
+		children: LABS.map((item) => {
+			const Icon = item.icon;
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+				type: "button",
+				onClick: () => setLab(item.id),
+				className: "rounded-[var(--radius-md)] border border-border bg-bg p-5 text-left transition-colors hover:border-primary",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-5 text-primary" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "mt-3 font-display text-lg font-bold",
+						children: item.title
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-sm text-muted",
+						children: item.blurb
+					})
+				]
+			}, item.id);
+		})
+	})] });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			variant: "ghost",
+			className: "mb-4 px-2",
+			onClick: () => setLab(null),
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, { className: "size-4" }), "All labs"]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+			title: active.title,
+			description: active.blurb
+		}),
+		lab === "light" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "spectrum" }),
+		lab === "circuit" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircuitLab, {}),
+		lab === "sankey" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "space-y-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SankeyLab, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EnergyTools, {})]
+		}),
+		lab === "decay" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "space-y-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecayLab, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HalfLifeTool, {})]
+		})
+	] });
 }
 var noteSections = [
 	{
@@ -6575,499 +8941,205 @@ var noteSections = [
 		}]
 	}
 ];
-var BANDS = [
-	{
-		id: "radio",
-		label: "Radio",
-		color: "bg-[#3b82f6]",
-		uses: "Radio, TV, some mobile signals. Longest wavelength; mostly passes through the body."
-	},
-	{
-		id: "micro",
-		label: "Microwave",
-		color: "bg-[#22d3ee]",
-		uses: "Heating food (water molecules vibrate), radar, satellite beams."
-	},
-	{
-		id: "ir",
-		label: "Infrared",
-		color: "bg-[#f97316]",
-		uses: "Heat, remotes, thermal cameras, cooking. Hotter objects emit more IR."
-	},
-	{
-		id: "vis",
-		label: "Visible",
-		color: "bg-gradient-to-r from-red-500 via-green-400 to-violet-500",
-		uses: "The only EM radiation human eyes detect (~390–780 nm). Red next to IR; violet next to UV."
-	},
-	{
-		id: "uv",
-		label: "UV",
-		color: "bg-[#a855f7]",
-		uses: "Vitamin D, fluorescence, security inks. Overexposure: sunburn, ageing, skin cancer."
-	},
-	{
-		id: "x",
-		label: "X-ray",
-		color: "bg-[#e879f9]",
-		uses: "Bone and security imaging. Produced in an X-ray tube. Lead shielding for radiographers."
-	},
-	{
-		id: "gamma",
-		label: "Gamma",
-		color: "bg-[#f43f5e]",
-		uses: "Radioactive sources. Sterilising, tracers, radiotherapy. Shortest λ, highest energy."
-	}
-];
-function SpectrumStrip() {
-	const [id, setId] = (0, import_react.useState)("vis");
-	const band = BANDS.find((b) => b.id === id);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "mt-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-				className: "text-lg font-bold",
-				children: "Interactive spectrum"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-sm text-muted",
-				children: "Tap a band. Energy and hazard increase to the right."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-3 flex overflow-hidden rounded-[var(--radius-md)] border border-border",
-				children: BANDS.map((b) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					type: "button",
-					onClick: () => setId(b.id),
-					className: `h-16 min-w-0 flex-1 ${b.color} px-1 text-[10px] font-bold text-white sm:text-xs ${id === b.id ? "ring-2 ring-inset ring-white" : ""}`,
-					children: b.label
-				}, b.id))
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 flex justify-between text-[10px] uppercase tracking-wide text-muted",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Long λ · low f · lower energy" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Short λ · high f · higher energy" })]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-3 rounded-[var(--radius-sm)] border border-border bg-surface p-4 text-sm",
-				children: band.uses
-			})
-		]
-	});
-}
-function EnergyTools({ mode = "all" }) {
-	const [mass, setMass] = (0, import_react.useState)("5");
-	const [height, setHeight] = (0, import_react.useState)("2");
-	const [g, setG] = (0, import_react.useState)("10");
-	const [speed, setSpeed] = (0, import_react.useState)("4");
-	const [force, setForce] = (0, import_react.useState)("1000");
-	const [dist, setDist] = (0, import_react.useState)("50");
-	const [useful, setUseful] = (0, import_react.useState)("10");
-	const [input, setInput] = (0, import_react.useState)("100");
-	const gpe = (0, import_react.useMemo)(() => n(mass) * n(g) * n(height), [
-		mass,
-		g,
-		height
-	]);
-	const ke = (0, import_react.useMemo)(() => .5 * n(mass) * n(speed) ** 2, [mass, speed]);
-	const work = (0, import_react.useMemo)(() => n(force) * n(dist), [force, dist]);
-	const eff = (0, import_react.useMemo)(() => n(input) === 0 ? 0 : n(useful) / n(input) * 100, [useful, input]);
-	const waste = (0, import_react.useMemo)(() => n(input) - n(useful), [input, useful]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "mt-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-				className: "text-lg font-bold",
-				children: mode === "efficiency" ? "Efficiency calculator" : "Formula calculator"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "text-sm text-muted",
-				children: "Numbers match the class worksheets. Use g = 10 unless a question says 9.81."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 grid gap-3 md:grid-cols-2",
-				children: [(mode === "all" || mode === "efficiency") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					title: "Efficiency",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Useful energy (J)",
-							value: useful,
-							onChange: setUseful
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-							label: "Input energy (J)",
-							value: input,
-							onChange: setInput
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
-							label: "Efficiency",
-							value: `${eff.toFixed(1)}%`
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
-							label: "Wasted",
-							value: `${waste} J`
-						})
-					]
-				}), mode === "all" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						title: "GPE = mgh",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Mass (kg)",
-								value: mass,
-								onChange: setMass
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "g (N/kg)",
-								value: g,
-								onChange: setG
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Height (m)",
-								value: height,
-								onChange: setHeight
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
-								label: "Ep",
-								value: `${gpe.toFixed(2)} J`
-							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						title: "KE = ½mv²",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Mass (kg)",
-								value: mass,
-								onChange: setMass
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Speed (m/s)",
-								value: speed,
-								onChange: setSpeed
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
-								label: "Ek",
-								value: `${ke.toFixed(2)} J`
-							})
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						title: "Work = F × s",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Force (N)",
-								value: force,
-								onChange: setForce
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: "Distance (m)",
-								value: dist,
-								onChange: setDist
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Result, {
-								label: "W",
-								value: `${work.toFixed(2)} J`
-							})
-						]
-					})
-				] })]
-			})
-		]
-	});
-}
-function n(v) {
-	const x = Number(v);
-	return Number.isFinite(x) ? x : 0;
-}
-function Card({ title, children }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-md)] border border-border bg-surface p-4",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "mb-3 font-bold",
-			children: title
-		}), children]
-	});
-}
-function Field({ label, value, onChange }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-		className: "mb-2 block text-xs text-muted",
-		children: [label, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-			className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-bg px-3 text-sm text-foreground",
-			value,
-			onChange: (e) => onChange(e.target.value),
-			inputMode: "decimal"
-		})]
-	});
-}
-function Result({ label, value }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-		className: "mt-2 text-sm",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-			className: "text-muted",
-			children: [label, ": "]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			className: "font-mono font-bold text-primary",
-			children: value
-		})]
-	});
-}
-function HalfLifeTool() {
-	const [initial, setInitial] = (0, import_react.useState)("100");
-	const [half, setHalf] = (0, import_react.useState)("5730");
-	const [time, setTime] = (0, import_react.useState)("17190");
-	const [unit, setUnit] = (0, import_react.useState)("years");
-	const n = (0, import_react.useMemo)(() => {
-		const h = Number(half);
-		const t = Number(time);
-		if (!h || h <= 0) return 0;
-		return t / h;
-	}, [half, time]);
-	const remaining = (0, import_react.useMemo)(() => {
-		const start = Number(initial);
-		if (!Number.isFinite(start)) return 0;
-		return start * Math.pow(.5, n);
-	}, [initial, n]);
-	const fraction = (0, import_react.useMemo)(() => Math.pow(.5, n), [n]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "mt-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-				className: "text-lg font-bold",
-				children: "Half-life calculator"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "text-sm text-muted",
-				children: [
-					"remaining = initial × (1/2)",
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("sup", { children: "n" }),
-					" where n is the number of half-lives."
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 grid gap-3 sm:grid-cols-2",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "text-xs text-muted",
-						children: ["Starting amount", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
-							value: initial,
-							onChange: (e) => setInitial(e.target.value)
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "text-xs text-muted",
-						children: ["Half-life", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
-							value: half,
-							onChange: (e) => setHalf(e.target.value)
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "text-xs text-muted",
-						children: ["Elapsed time", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
-							value: time,
-							onChange: (e) => setTime(e.target.value)
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-						className: "text-xs text-muted",
-						children: ["Unit (label only)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							className: "mt-1 h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-foreground",
-							value: unit,
-							onChange: (e) => setUnit(e.target.value)
-						})]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-4 grid gap-2 sm:grid-cols-3",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-						label: "Half-lives (n)",
-						value: n.toFixed(2)
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-						label: "Fraction left",
-						value: fraction.toPrecision(3)
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-						label: `Amount left`,
-						value: `${remaining.toPrecision(4)} (${unit})`
-					})
-				]
-			})
-		]
-	});
-}
-function Stat({ label, value }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-3",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "text-xs text-muted",
-			children: label
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-			className: "font-mono text-lg font-bold text-primary",
-			children: value
-		})]
-	});
-}
-function NotesPanel() {
+function NotesPanel({ onDrill }) {
 	const [filter, setFilter] = (0, import_react.useState)("all");
 	const [activeId, setActiveId] = (0, import_react.useState)(noteSections[0]?.id ?? "");
+	const [weak, setWeak] = (0, import_react.useState)(null);
+	(0, import_react.useEffect)(() => {
+		const stats = loadStats();
+		let worst = null;
+		let rate = 2;
+		for (const id of TOPIC_ORDER) {
+			const s = stats[id];
+			if (!s || s.t < 3) continue;
+			const r = s.c / s.t;
+			if (r < rate) {
+				rate = r;
+				worst = id;
+			}
+		}
+		setWeak(worst);
+	}, []);
 	const visible = (0, import_react.useMemo)(() => filter === "all" ? noteSections : noteSections.filter((s) => s.topic === filter), [filter]);
 	const active = visible.find((s) => s.id === activeId) ?? visible[0];
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "text-xl font-bold",
-				children: "Study notes by pack"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-2 text-sm text-muted",
-				children: "Each section matches an uploaded Year 9 file set. Open a pack, then use the tools at the bottom when they appear."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-5 flex gap-2 overflow-x-auto pb-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FilterChip, {
-					label: "All packs",
-					on: () => setFilter("all"),
-					active: filter === "all"
-				}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FilterChip, {
-					label: catNames[id],
-					on: () => {
-						setFilter(id);
-						const first = noteSections.find((s) => s.topic === id);
-						if (first) setActiveId(first.id);
-					},
-					active: filter === id
-				}, id))]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-6 grid gap-6 lg:grid-cols-[260px_1fr]",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
-					className: "flex flex-col gap-2",
-					"aria-label": "Note sections",
-					children: visible.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => setActiveId(s.id),
-						className: cn("rounded-[var(--radius-md)] border px-4 py-3 text-left transition-colors", active?.id === s.id ? "border-primary bg-primary/15 text-foreground" : "border-border bg-bg text-muted hover:text-foreground"),
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "block text-sm font-bold text-foreground",
-							children: s.title
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "mt-1 block text-xs text-muted",
-							children: s.pack
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+			kicker: "Read",
+			title: "Study notes",
+			description: "Each pack matches an uploaded Year 9 file. Open a section, then use the lab at the bottom when it appears."
+		}),
+		weak && onDrill && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mb-6 flex flex-col gap-3 rounded-[var(--radius-md)] border border-primary/30 bg-bg px-4 py-4 sm:flex-row sm:items-center sm:justify-between",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs font-semibold uppercase tracking-wide text-primary",
+				children: "A-path"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-1 text-sm",
+				children: [
+					"Lowest accuracy: ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: catNames[weak] }),
+					". Ten questions on that pack, then re-read the notes."
+				]
+			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				variant: "action",
+				onClick: () => onDrill(weak),
+				children: "Drill this topic"
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex gap-2 overflow-x-auto pb-1",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FilterChip, {
+				label: "All packs",
+				on: () => setFilter("all"),
+				active: filter === "all"
+			}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FilterChip, {
+				label: catNames[id],
+				on: () => {
+					setFilter(id);
+					const first = noteSections.find((s) => s.topic === id);
+					if (first) setActiveId(first.id);
+				},
+				active: filter === id
+			}, id))]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-6 grid gap-6 lg:grid-cols-[240px_1fr]",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+				className: "flex flex-col gap-2",
+				"aria-label": "Note sections",
+				children: visible.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					type: "button",
+					onClick: () => setActiveId(s.id),
+					className: cn("rounded-[var(--radius-sm)] border px-4 py-3 text-left transition-colors", active?.id === s.id ? "border-primary bg-primary/15 text-foreground" : "border-border bg-bg text-muted hover:text-foreground"),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "block text-sm font-bold text-foreground",
+						children: s.title
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 block text-xs text-muted",
+						children: s.pack
+					})]
+				}, s.id))
+			}), active && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "fade-in min-w-0 rounded-[var(--radius-md)] border border-border bg-bg p-5 md:p-6",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs font-bold uppercase tracking-wider text-primary",
+						children: catNames[active.topic]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "mt-1 text-2xl font-bold",
+						children: active.title
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-3 text-muted",
+						children: active.summary
+					}),
+					active.blocks.map((block) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "mt-6",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "text-lg font-bold",
+							children: block.heading
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+							className: "mt-2 list-disc space-y-2 pl-5 text-sm text-foreground/90",
+							children: block.body.map((line) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: line }, line))
 						})]
-					}, s.id))
-				}), active && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-					className: "fade-in min-w-0 rounded-[var(--radius-md)] border border-border bg-bg p-5 md:p-6",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs font-bold uppercase tracking-wider text-primary",
-							children: catNames[active.topic]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-							className: "mt-1 text-2xl font-bold",
-							children: active.title
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-3 text-muted",
-							children: active.summary
-						}),
-						active.blocks.map((block) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-							className: "mt-6",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-								className: "text-lg font-bold",
-								children: block.heading
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-								className: "mt-2 list-disc space-y-2 pl-5 text-sm text-foreground/90",
-								children: block.body.map((line) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: line }, line))
-							})]
-						}, block.heading)),
-						active.formulas && active.formulas.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-							className: "mt-6",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-								className: "text-lg font-bold",
-								children: "Formulas"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-2 grid gap-2",
-								children: active.formulas.map((f) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "rounded-[var(--radius-sm)] border border-border bg-surface px-4 py-3",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "text-xs font-bold uppercase tracking-wide text-muted",
-											children: f.name
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "font-mono text-base text-primary",
-											children: f.formula
-										}),
-										f.note && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "mt-1 text-xs text-muted",
-											children: f.note
-										})
-									]
-								}, f.name))
-							})]
-						}),
-						active.worked && active.worked.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-							className: "mt-6",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-								className: "text-lg font-bold",
-								children: "Worked examples from the pack"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-2 space-y-3",
-								children: active.worked.map((w) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "rounded-[var(--radius-sm)] border border-border bg-surface p-4",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-sm font-semibold",
-										children: w.q
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1 text-sm text-secondary",
-										children: w.a
-									})]
-								}, w.q))
-							})]
-						}),
-						active.glossary && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-							className: "mt-6",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-								className: "text-lg font-bold",
-								children: "Glossary"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dl", {
-								className: "mt-2 space-y-2",
-								children: active.glossary.map((g) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", {
-									className: "text-sm font-bold text-primary",
-									children: g.term
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", {
-									className: "text-sm text-muted",
-									children: g.def
-								})] }, g.term))
-							})]
-						}),
-						active.id === "em-spectrum" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpectrumStrip, {}),
-						active.id === "energy-work" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EnergyTools, {}),
-						active.id === "energy-sankey" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EnergyTools, { mode: "efficiency" }),
-						active.id === "radio-halflife" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HalfLifeTool, {}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-							className: "mt-8 border-t border-border pt-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs font-bold uppercase tracking-wider text-muted",
-								children: "Source files"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-								className: "mt-2 columns-1 gap-6 text-sm text-muted sm:columns-2",
-								children: active.sources.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-									className: "break-inside-avoid py-0.5",
-									children: s
-								}, s))
-							})]
-						})
-					]
-				})]
-			})
-		]
-	});
+					}, block.heading)),
+					active.formulas && active.formulas.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "mt-6",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "text-lg font-bold",
+							children: "Formulas"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-2 grid gap-2",
+							children: active.formulas.map((f) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-[var(--radius-sm)] border border-border bg-surface px-4 py-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-xs font-bold uppercase tracking-wide text-muted",
+										children: f.name
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "font-mono text-base text-primary",
+										children: f.formula
+									}),
+									f.note && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-1 text-xs text-muted",
+										children: f.note
+									})
+								]
+							}, f.name))
+						})]
+					}),
+					active.worked && active.worked.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "mt-6",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "text-lg font-bold",
+							children: "Worked examples from the pack"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-2 space-y-3",
+							children: active.worked.map((w) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-[var(--radius-sm)] border border-border bg-surface p-4",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-sm font-semibold",
+									children: w.q
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-1 text-sm text-secondary",
+									children: w.a
+								})]
+							}, w.q))
+						})]
+					}),
+					active.glossary && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "mt-6",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "text-lg font-bold",
+							children: "Glossary"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dl", {
+							className: "mt-2 space-y-2",
+							children: active.glossary.map((g) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", {
+								className: "text-sm font-bold text-primary",
+								children: g.term
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", {
+								className: "text-sm text-muted",
+								children: g.def
+							})] }, g.term))
+						})]
+					}),
+					active.id === "em-spectrum" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "spectrum" }),
+					active.id === "visible-light" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "spectrum" }),
+					active.id === "reflection" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "reflection" }),
+					active.id === "refraction" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "refraction" }),
+					active.id === "colour" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LightLab, { initial: "colour" }),
+					active.id === "energy-work" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EnergyTools, {}),
+					active.id === "energy-sankey" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-8 space-y-8",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SankeyLab, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EnergyTools, { mode: "efficiency" })]
+					}),
+					active.id === "radio-halflife" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-8 space-y-8",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecayLab, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HalfLifeTool, {})]
+					}),
+					(active.id === "electricity-intro" || active.id === "electricity-circuits") && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-8",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircuitLab, {})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						className: "mt-8 border-t border-border pt-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs font-bold uppercase tracking-wider text-muted",
+							children: "Source files"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+							className: "mt-2 columns-1 gap-6 text-sm text-muted sm:columns-2",
+							children: active.sources.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+								className: "break-inside-avoid py-0.5",
+								children: s
+							}, s))
+						})]
+					})
+				]
+			})]
+		})
+	] });
 }
 function FilterChip({ label, active, on }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -7093,119 +9165,122 @@ function PerformancePanel() {
 			setTick((t) => t + 1);
 		}
 	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "text-xl font-bold",
-				children: "Performance"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-2 text-sm text-muted",
-				children: "Weak areas show in red or amber. Tap a topic to see every question from that subdivision."
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4",
-				children: TOPIC_ORDER.map((key) => {
-					const data = stats?.[key] ?? {
-						c: 0,
-						t: 0
-					};
-					const percent = data.t === 0 ? 0 : Math.round(data.c / data.t * 100);
-					let status = "No data yet";
-					let tone = "border-border";
-					if (data.t > 0 && percent >= 80) {
-						status = "Confident";
-						tone = "border-success";
-					} else if (data.t > 0 && percent >= 50) {
-						status = "Getting there";
-						tone = "border-warning";
-					} else if (data.t > 0) {
-						status = "Needs review";
-						tone = "border-danger";
-					}
-					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => setOpen(key),
-						className: cn("rounded-[var(--radius-md)] border-b-4 bg-surface-hover p-4 text-center transition-transform hover:-translate-y-0.5", tone),
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "text-sm font-bold",
-								children: catNames[key]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "my-1 font-mono text-3xl font-bold",
-								children: [percent, "%"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "text-xs text-muted",
-								children: [
-									data.c,
-									" / ",
-									data.t,
-									" correct"
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-2 text-xs font-bold",
-								children: status
-							})
-						]
-					}, key);
-				})
-			}),
-			open && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-8",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-						className: "text-lg font-bold",
-						children: [catNames[open], " — individual questions"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-sm text-muted",
-						children: "Each question keeps its own record."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-3 space-y-2",
-						children: questionsFor(open).map((q, i) => {
-							const d = qStats[q.q] ?? {
-								c: 0,
-								t: 0
-							};
-							const percent = d.t ? Math.round(d.c / d.t * 100) : 0;
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "rounded-[var(--radius-md)] border border-border bg-bg px-4 py-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "text-sm font-semibold",
-									children: [
-										i + 1,
-										". ",
-										q.q
-									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-1 text-xs text-muted",
-									children: d.t ? `${d.c}/${d.t} correct (${percent}%)` : "Not attempted yet"
-								})]
-							}, q.q);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+			kicker: "Track",
+			title: "Progress",
+			description: "Weak areas show amber or red. Tap a topic to see every question. Games and quizzes both write here."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4",
+			children: TOPIC_ORDER.map((key) => {
+				const data = stats?.[key] ?? {
+					c: 0,
+					t: 0
+				};
+				const percent = data.t === 0 ? 0 : Math.round(data.c / data.t * 100);
+				let status = "No data yet";
+				let tone = "border-border";
+				if (data.t > 0 && percent >= 80) {
+					status = "A range";
+					tone = "border-success";
+				} else if (data.t > 0 && percent >= 50) {
+					status = "Getting there";
+					tone = "border-warning";
+				} else if (data.t > 0) {
+					status = "Needs review";
+					tone = "border-danger";
+				}
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					type: "button",
+					onClick: () => setOpen(key),
+					className: cn("rounded-[var(--radius-md)] border-b-4 bg-bg p-4 text-center transition-transform hover:-translate-y-0.5", tone),
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "text-sm font-bold",
+							children: catNames[key]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "my-1 font-mono text-3xl font-bold tabular-nums",
+							children: [percent, "%"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-xs text-muted",
+							children: [
+								data.c,
+								" / ",
+								data.t,
+								" correct"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-2 text-xs font-bold",
+							children: status
 						})
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				variant: "danger",
-				className: "mt-8",
-				onClick: reset,
-				children: "Reset progress"
+					]
+				}, key);
 			})
-		]
-	});
+		}),
+		open && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-8",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+					className: "text-lg font-bold",
+					children: [catNames[open], " — individual questions"]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm text-muted",
+					children: "Each question keeps its own record."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-3 space-y-2",
+					children: questionsFor(open).map((q, i) => {
+						const d = qStats[q.q] ?? {
+							c: 0,
+							t: 0
+						};
+						const percent = d.t ? Math.round(d.c / d.t * 100) : 0;
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "rounded-[var(--radius-sm)] border border-border bg-bg px-4 py-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-sm font-semibold",
+								children: [
+									i + 1,
+									". ",
+									q.q
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-xs text-muted",
+								children: d.t ? `${d.c}/${d.t} correct (${percent}%)` : "Not attempted yet"
+							})]
+						}, q.q);
+					})
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+			variant: "danger",
+			className: "mt-8",
+			onClick: reset,
+			children: "Reset progress"
+		})
+	] });
 }
-function QuizPanel() {
-	const [topic, setTopic] = (0, import_react.useState)("all");
+function QuizPanel({ initialTopic = "all" }) {
+	const [topic, setTopic] = (0, import_react.useState)(initialTopic === "all" ? "all" : initialTopic);
 	const [length, setLength] = (0, import_react.useState)(10);
+	const [exam, setExam] = (0, import_react.useState)(false);
+	const [remain, setRemain] = (0, import_react.useState)(0);
 	const [items, setItems] = (0, import_react.useState)([]);
 	const [submitted, setSubmitted] = (0, import_react.useState)(false);
 	const [score, setScore] = (0, import_react.useState)(null);
+	const itemsRef = (0, import_react.useRef)(items);
+	const submittedRef = (0, import_react.useRef)(submitted);
+	itemsRef.current = items;
+	submittedRef.current = submitted;
+	(0, import_react.useEffect)(() => {
+		if (initialTopic && initialTopic !== "all") setTopic(initialTopic);
+	}, [initialTopic]);
 	const available = (0, import_react.useMemo)(() => questionsFor(topic).length, [topic]);
 	function start() {
 		const pool = shuffle(questionsFor(topic));
@@ -7215,18 +9290,14 @@ function QuizPanel() {
 			options: q.options ? shuffle(q.options) : q.options
 		})));
 		setSubmitted(false);
+		submittedRef.current = false;
 		setScore(null);
-	}
-	function setAnswer(i, value) {
-		if (submitted) return;
-		setItems((prev) => prev.map((q, idx) => idx === i ? {
-			...q,
-			userAns: value,
-			answered: true
-		} : q));
+		setRemain(exam ? n <= 10 ? 480 : 900 : 0);
 	}
 	function submit() {
-		const updates = items.filter((q) => q.answered).map((q) => ({
+		if (submittedRef.current) return;
+		submittedRef.current = true;
+		const updates = itemsRef.current.filter((q) => q.answered).map((q) => ({
 			cat: q.cat,
 			q: q.q,
 			correct: answersMatch(q.userAns || "", q.a)
@@ -7234,245 +9305,308 @@ function QuizPanel() {
 		if (updates.length) saveQuizResults(updates);
 		setSubmitted(true);
 		setScore(updates.filter((u) => u.correct).length);
+		setRemain(0);
 	}
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "text-xl font-bold text-foreground",
-				children: "Generate a smart quiz"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "mt-2 text-sm text-muted",
-				children: [qBank.length, " questions from your Year 9 packs. Results save to Performance."]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-5 flex flex-wrap gap-3",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-						className: "h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground",
-						value: topic,
-						onChange: (e) => setTopic(e.target.value),
-						"aria-label": "Quiz topic",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-							value: "all",
-							children: [
-								"Mix all topics (",
-								qBank.length,
-								")"
-							]
-						}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-							value: id,
-							children: catNames[id]
-						}, id))]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-						className: "h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground",
-						value: length,
-						onChange: (e) => setLength(Number(e.target.value)),
-						"aria-label": "Quiz length",
+	(0, import_react.useEffect)(() => {
+		if (!exam || items.length === 0 || submitted) return;
+		const id = window.setInterval(() => {
+			setRemain((t) => {
+				if (t <= 1) {
+					window.setTimeout(() => submit(), 0);
+					return 0;
+				}
+				return t - 1;
+			});
+		}, 1e3);
+		return () => window.clearInterval(id);
+	}, [
+		exam,
+		items.length,
+		submitted
+	]);
+	const mins = Math.floor(remain / 60);
+	const secs = String(remain % 60).padStart(2, "0");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PanelTitle, {
+			kicker: "Test",
+			title: "Smart quizzes",
+			description: `${qBank.length} questions from the Year 9 packs. Results save to Progress. Exam mode adds a clock and auto-submits.`
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap gap-3",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+					className: "h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground",
+					value: topic,
+					onChange: (e) => setTopic(e.target.value),
+					"aria-label": "Quiz topic",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+						value: "all",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: 5,
-								children: "5 questions"
+							"Mix all topics (",
+							qBank.length,
+							")"
+						]
+					}), TOPIC_ORDER.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+						value: id,
+						children: catNames[id]
+					}, id))]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
+					className: "h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground",
+					value: length,
+					onChange: (e) => setLength(Number(e.target.value)),
+					"aria-label": "Quiz length",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: 5,
+							children: "5 questions"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: 10,
+							children: "10 questions"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+							value: 20,
+							children: "20 questions"
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+					className: "flex h-11 items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						type: "checkbox",
+						checked: exam,
+						onChange: (e) => setExam(e.target.checked),
+						className: "size-4 accent-primary"
+					}), "Exam clock"]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "action",
+					onClick: start,
+					disabled: available === 0,
+					children: "Start quiz"
+				})
+			]
+		}),
+		exam && items.length > 0 && !submitted && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "mt-4 font-mono text-lg tabular-nums text-primary",
+			children: [
+				mins,
+				":",
+				secs
+			]
+		}),
+		items.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-8 text-sm text-muted",
+			children: "Choose a topic and start a quiz to begin."
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-6 space-y-4",
+			children: [
+				score !== null && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rounded-[var(--radius-sm)] border border-success/40 bg-success/10 px-4 py-3 text-success",
+					children: [
+						"Saved ",
+						score,
+						" / ",
+						items.filter((q) => q.answered).length,
+						" correct. Check Progress for weak spots."
+					]
+				}),
+				items.map((q, i) => {
+					const correct = submitted && answersMatch(q.userAns || "", q.a);
+					const showAnswer = submitted && q.answered;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+						className: "rounded-[var(--radius-md)] border border-border bg-bg p-4 md:p-5",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-bold uppercase tracking-wider text-primary",
+								children: catNames[q.cat] ?? q.cat
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: 10,
-								children: "10 questions"
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-2 font-semibold text-foreground",
+								children: [
+									i + 1,
+									". ",
+									q.q
+								]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-								value: 20,
-								children: "20 questions"
+							q.type === "mcq" && q.options ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-3 grid gap-2",
+								children: q.options.map((opt) => {
+									let cls = "mcq";
+									if (showAnswer && opt === (Array.isArray(q.a) ? q.a[0] : q.a)) cls = "correct";
+									else if (showAnswer && opt === q.userAns && !correct) cls = "incorrect";
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										disabled: submitted,
+										onClick: () => {
+											if (submitted) return;
+											setItems((prev) => prev.map((item, idx) => idx === i ? {
+												...item,
+												userAns: opt,
+												answered: true
+											} : item));
+										},
+										className: ["w-full rounded-[var(--radius-sm)] border px-4 py-3 text-left text-sm font-semibold transition-colors", cls === "correct" ? "border-success bg-success text-success-foreground" : cls === "incorrect" ? "border-danger bg-danger text-danger-foreground" : q.userAns === opt ? "border-primary bg-primary/15 text-foreground" : "border-border bg-surface-hover text-foreground hover:border-primary"].join(" "),
+										children: opt
+									}, opt);
+								})
+							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								className: "mt-3 h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-foreground",
+								placeholder: "Type your answer",
+								value: q.userAns ?? "",
+								disabled: submitted,
+								onChange: (e) => {
+									const value = e.target.value;
+									setItems((prev) => prev.map((item, idx) => idx === i ? {
+										...item,
+										userAns: value,
+										answered: true
+									} : item));
+								}
+							}),
+							showAnswer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: `mt-3 rounded-[var(--radius-sm)] border px-3 py-2 text-sm font-bold ${correct ? "border-success bg-success/15 text-success" : "border-danger bg-danger/15 text-danger"}`,
+								children: correct ? "Correct" : `Incorrect. The accepted answer is: ${Array.isArray(q.a) ? q.a[0] : q.a}`
 							})
 						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "action",
-						onClick: start,
-						disabled: available === 0,
-						children: "Start quiz"
-					})
-				]
-			}),
-			items.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-8 text-sm text-muted",
-				children: "Choose a topic and start a quiz to begin."
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-6 space-y-4",
-				children: [
-					score !== null && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-[var(--radius-md)] border border-success/40 bg-success/10 px-4 py-3 text-success",
-						children: [
-							"Saved ",
-							score,
-							" / ",
-							items.filter((q) => q.answered).length,
-							" correct. Check Performance for weak spots."
-						]
-					}),
-					items.map((q, i) => {
-						const correct = submitted && answersMatch(q.userAns || "", q.a);
-						const showAnswer = submitted && q.answered;
-						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-							className: "rounded-[var(--radius-md)] border border-border bg-bg p-4 md:p-5",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-xs font-bold uppercase tracking-wider text-primary",
-									children: catNames[q.cat] ?? q.cat
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-2 font-semibold text-foreground",
-									children: [
-										i + 1,
-										". ",
-										q.q
-									]
-								}),
-								q.type === "mcq" && q.options ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mt-3 grid gap-2",
-									children: q.options.map((opt) => {
-										let cls = "mcq";
-										if (showAnswer && opt === (Array.isArray(q.a) ? q.a[0] : q.a)) cls = "correct";
-										else if (showAnswer && opt === q.userAns && !correct) cls = "incorrect";
-										return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-											type: "button",
-											disabled: submitted,
-											onClick: () => setAnswer(i, opt),
-											className: ["w-full rounded-[var(--radius-sm)] border px-4 py-3 text-left text-sm font-semibold transition-colors", cls === "correct" ? "border-success bg-success text-white" : cls === "incorrect" ? "border-danger bg-danger text-white" : q.userAns === opt ? "border-primary bg-primary/15 text-foreground" : "border-border bg-surface-hover text-foreground hover:border-primary"].join(" "),
-											children: opt
-										}, opt);
-									})
-								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-									className: "written-input mt-3 h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-foreground",
-									placeholder: "Type your answer",
-									value: q.userAns ?? "",
-									disabled: submitted,
-									onChange: (e) => setAnswer(i, e.target.value)
-								}),
-								showAnswer && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: `mt-3 rounded-[var(--radius-sm)] border px-3 py-2 text-sm font-bold ${correct ? "border-success bg-success/15 text-success" : "border-danger bg-danger/15 text-danger"}`,
-									children: correct ? "Correct" : `Incorrect. The accepted answer is: ${Array.isArray(q.a) ? q.a[0] : q.a}`
-								})
-							]
-						}, `${q.q}-${i}`);
-					}),
-					!submitted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						variant: "action",
-						size: "full",
-						onClick: submit,
-						children: "Submit answers and save progress"
-					})
-				]
-			})
-		]
+					}, `${q.q}-${i}`);
+				}),
+				!submitted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+					variant: "action",
+					size: "full",
+					onClick: submit,
+					children: "Submit answers and save progress"
+				})
+			]
+		})
+	] });
+}
+var TABS = [
+	{
+		id: "notes",
+		label: "Notes",
+		icon: BookOpenText
+	},
+	{
+		id: "quizzes",
+		label: "Quizzes",
+		icon: PenLine
+	},
+	{
+		id: "labs",
+		label: "Labs",
+		icon: Atom
+	},
+	{
+		id: "games",
+		label: "Games",
+		icon: Gamepad2
+	},
+	{
+		id: "stats",
+		label: "Progress",
+		icon: ChartColumn
+	},
+	{
+		id: "calendar",
+		label: "Planner",
+		icon: CalendarDays
+	}
+];
+function ScienceApp() {
+	const [tab, setTab] = (0, import_react.useState)("notes");
+	const [quizTopic, setQuizTopic] = (0, import_react.useState)("all");
+	const counts = (0, import_react.useMemo)(() => ({
+		notes: noteSections.length,
+		questions: qBank.length
+	}), []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mx-auto flex min-h-screen max-w-6xl flex-col lg:flex-row",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
+			className: "hidden w-60 shrink-0 flex-col border-r border-border px-5 py-8 lg:flex",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wordmark, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-3 text-xs leading-relaxed text-muted",
+					children: "Year 9 science companion. Notes, labs and drills from your class packs."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+					className: "mt-8 flex flex-col gap-1",
+					"aria-label": "StudyMate",
+					children: TABS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
+						active: tab === item.id,
+						onClick: () => setTab(item.id),
+						icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(item.icon, { className: "size-4" }),
+						label: item.label
+					}, item.id))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "mt-auto pt-8 text-xs text-muted",
+					children: [
+						counts.notes,
+						" note packs · ",
+						counts.questions,
+						" questions"
+					]
+				})
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "min-w-0 flex-1",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+				className: "sticky top-0 z-20 border-b border-border bg-bg/90 px-4 py-3 backdrop-blur-md lg:hidden",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wordmark, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+					className: "-mx-1 mt-3 flex gap-1 overflow-x-auto pb-1",
+					"aria-label": "StudyMate",
+					children: TABS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
+						active: tab === item.id,
+						onClick: () => setTab(item.id),
+						icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(item.icon, { className: "size-4" }),
+						label: item.label,
+						compact: true
+					}, item.id))
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "px-4 py-6 md:px-8 md:py-8",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "fade-in",
+					children: [
+						tab === "notes" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotesPanel, { onDrill: (topic) => {
+							setQuizTopic(topic);
+							setTab("quizzes");
+						} }),
+						tab === "quizzes" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QuizPanel, { initialTopic: quizTopic }),
+						tab === "labs" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LabsPanel, {}),
+						tab === "games" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GamesPanel, {}),
+						tab === "stats" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PerformancePanel, {}),
+						tab === "calendar" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarPanel, {})
+					]
+				}, tab)
+			})]
+		})]
 	});
 }
-function ScienceApp() {
-	const [main, setMain] = (0, import_react.useState)("science");
-	const [sub, setSub] = (0, import_react.useState)("material");
+function Wordmark() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-				className: "mb-8",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-xs font-bold uppercase tracking-[0.2em] text-primary",
-						children: "Year 9 physical science"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						className: "mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl",
-						children: "Year 9 Science Hub"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-2 max-w-2xl text-muted",
-						children: "Notes, quizzes and tools built from your uploaded packs — energy, light, electricity, radioactivity and the rest of the course."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "mt-3 text-sm text-muted",
-						children: [
-							noteSections.length,
-							" note sections · ",
-							qBank.length,
-							" quiz questions"
-						]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-				className: "mb-6 flex gap-3 overflow-x-auto rounded-[var(--radius-lg)] border border-border bg-surface p-3 shadow-lg",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-						active: main === "science",
-						onClick: () => setMain("science"),
-						icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FlaskConical, { className: "size-4" }),
-						label: "Science revision"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-						active: main === "analytics",
-						onClick: () => setMain("analytics"),
-						icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartColumn, { className: "size-4" }),
-						label: "My performance"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-						active: main === "timetable",
-						onClick: () => setMain("timetable"),
-						icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { className: "size-4" }),
-						label: "Calendar"
-					})
-				]
-			}),
-			main === "science" && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "fade-in",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mb-5 flex flex-wrap gap-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-								active: sub === "material",
-								onClick: () => setSub("material"),
-								icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpenText, { className: "size-4" }),
-								label: "Study notes",
-								compact: true
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-								active: sub === "quizzes",
-								onClick: () => setSub("quizzes"),
-								icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "size-4" }),
-								label: "Dynamic quizzes",
-								compact: true
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavBtn, {
-								active: sub === "games",
-								onClick: () => setSub("games"),
-								icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Gamepad2, { className: "size-4" }),
-								label: "Study games",
-								compact: true
-							})
-						]
-					}),
-					sub === "material" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotesPanel, {}),
-					sub === "quizzes" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QuizPanel, {}),
-					sub === "games" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GamesPanel, {})
-				]
-			}),
-			main === "analytics" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "fade-in",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PerformancePanel, {})
-			}),
-			main === "timetable" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "fade-in",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarPanel, {})
-			})
-		]
+		className: "flex items-center gap-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrandMark, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+			className: "font-display text-xl font-bold leading-none tracking-tight",
+			children: ["Study", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "text-primary",
+				children: "Mate"
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted",
+			children: "Year 9 science"
+		})] })]
 	});
 }
 function NavBtn({ active, onClick, icon, label, compact }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-		variant: active ? "default" : "outline",
-		size: compact ? "sm" : "default",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+		type: "button",
 		onClick,
-		className: cn("shrink-0", compact && "h-10"),
+		className: cn("inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-sm)] border text-sm font-semibold transition-colors", compact ? "h-10 px-3" : "h-11 w-full px-3", active ? "border-primary bg-primary text-primary-foreground" : "border-transparent text-muted hover:border-border hover:bg-surface-hover hover:text-foreground"),
 		children: [icon, label]
 	});
 }

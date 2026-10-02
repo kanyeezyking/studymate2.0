@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Panel, PanelTitle } from "@/components/ui/panel";
 import { qBank, questionsFor } from "@/lib/science/bank";
 import { saveQuizResults } from "@/lib/science/store";
 import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
@@ -8,12 +9,24 @@ import { answersMatch, shuffle } from "@/lib/utils";
 
 type QuizItem = Question & { userAns?: string; answered?: boolean };
 
-export function QuizPanel() {
-  const [topic, setTopic] = useState<TopicId | "all">("all");
+export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "all" | string }) {
+  const [topic, setTopic] = useState<TopicId | "all">(
+    initialTopic === "all" ? "all" : (initialTopic as TopicId),
+  );
   const [length, setLength] = useState(10);
+  const [exam, setExam] = useState(false);
+  const [remain, setRemain] = useState(0);
   const [items, setItems] = useState<QuizItem[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState<number | null>(null);
+  const itemsRef = useRef(items);
+  const submittedRef = useRef(submitted);
+  itemsRef.current = items;
+  submittedRef.current = submitted;
+
+  useEffect(() => {
+    if (initialTopic && initialTopic !== "all") setTopic(initialTopic as TopicId);
+  }, [initialTopic]);
 
   const available = useMemo(() => questionsFor(topic).length, [topic]);
 
@@ -22,16 +35,16 @@ export function QuizPanel() {
     const n = Math.min(length, pool.length);
     setItems(pool.slice(0, n).map((q) => ({ ...q, options: q.options ? shuffle(q.options) : q.options })));
     setSubmitted(false);
+    submittedRef.current = false;
     setScore(null);
-  }
-
-  function setAnswer(i: number, value: string) {
-    if (submitted) return;
-    setItems((prev) => prev.map((q, idx) => (idx === i ? { ...q, userAns: value, answered: true } : q)));
+    setRemain(exam ? (n <= 10 ? 8 * 60 : 15 * 60) : 0);
   }
 
   function submit() {
-    const updates = items
+    if (submittedRef.current) return;
+    submittedRef.current = true;
+    const curr = itemsRef.current;
+    const updates = curr
       .filter((q) => q.answered)
       .map((q) => ({
         cat: q.cat as TopicId,
@@ -41,15 +54,34 @@ export function QuizPanel() {
     if (updates.length) saveQuizResults(updates);
     setSubmitted(true);
     setScore(updates.filter((u) => u.correct).length);
+    setRemain(0);
   }
 
+  useEffect(() => {
+    if (!exam || items.length === 0 || submitted) return;
+    const id = window.setInterval(() => {
+      setRemain((t) => {
+        if (t <= 1) {
+          window.setTimeout(() => submit(), 0);
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [exam, items.length, submitted]);
+
+  const mins = Math.floor(remain / 60);
+  const secs = String(remain % 60).padStart(2, "0");
+
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8">
-      <h2 className="text-xl font-bold text-foreground">Generate a smart quiz</h2>
-      <p className="mt-2 text-sm text-muted">
-        {qBank.length} questions from your Year 9 packs. Results save to Performance.
-      </p>
-      <div className="mt-5 flex flex-wrap gap-3">
+    <Panel>
+      <PanelTitle
+        kicker="Test"
+        title="Smart quizzes"
+        description={`${qBank.length} questions from the Year 9 packs. Results save to Progress. Exam mode adds a clock and auto-submits.`}
+      />
+      <div className="flex flex-wrap gap-3">
         <select
           className="h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground"
           value={topic}
@@ -73,18 +105,33 @@ export function QuizPanel() {
           <option value={10}>10 questions</option>
           <option value={20}>20 questions</option>
         </select>
+        <label className="flex h-11 items-center gap-2 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm">
+          <input
+            type="checkbox"
+            checked={exam}
+            onChange={(e) => setExam(e.target.checked)}
+            className="size-4 accent-primary"
+          />
+          Exam clock
+        </label>
         <Button variant="action" onClick={start} disabled={available === 0}>
           Start quiz
         </Button>
       </div>
+
+      {exam && items.length > 0 && !submitted && (
+        <p className="mt-4 font-mono text-lg tabular-nums text-primary">
+          {mins}:{secs}
+        </p>
+      )}
 
       {items.length === 0 ? (
         <p className="mt-8 text-sm text-muted">Choose a topic and start a quiz to begin.</p>
       ) : (
         <div className="mt-6 space-y-4">
           {score !== null && (
-            <div className="rounded-[var(--radius-md)] border border-success/40 bg-success/10 px-4 py-3 text-success">
-              Saved {score} / {items.filter((q) => q.answered).length} correct. Check Performance for weak spots.
+            <div className="rounded-[var(--radius-sm)] border border-success/40 bg-success/10 px-4 py-3 text-success">
+              Saved {score} / {items.filter((q) => q.answered).length} correct. Check Progress for weak spots.
             </div>
           )}
           {items.map((q, i) => {
@@ -112,13 +159,18 @@ export function QuizPanel() {
                           key={opt}
                           type="button"
                           disabled={submitted}
-                          onClick={() => setAnswer(i, opt)}
+                          onClick={() => {
+                            if (submitted) return;
+                            setItems((prev) =>
+                              prev.map((item, idx) => (idx === i ? { ...item, userAns: opt, answered: true } : item)),
+                            );
+                          }}
                           className={[
                             "w-full rounded-[var(--radius-sm)] border px-4 py-3 text-left text-sm font-semibold transition-colors",
                             cls === "correct"
-                              ? "border-success bg-success text-white"
+                              ? "border-success bg-success text-success-foreground"
                               : cls === "incorrect"
-                                ? "border-danger bg-danger text-white"
+                                ? "border-danger bg-danger text-danger-foreground"
                                 : q.userAns === opt
                                   ? "border-primary bg-primary/15 text-foreground"
                                   : "border-border bg-surface-hover text-foreground hover:border-primary",
@@ -131,11 +183,16 @@ export function QuizPanel() {
                   </div>
                 ) : (
                   <input
-                    className="written-input mt-3 h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-foreground"
+                    className="mt-3 h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-foreground"
                     placeholder="Type your answer"
                     value={q.userAns ?? ""}
                     disabled={submitted}
-                    onChange={(e) => setAnswer(i, e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setItems((prev) =>
+                        prev.map((item, idx) => (idx === i ? { ...item, userAns: value, answered: true } : item)),
+                      );
+                    }}
                   />
                 )}
                 {showAnswer && (
@@ -161,6 +218,6 @@ export function QuizPanel() {
           )}
         </div>
       )}
-    </div>
+    </Panel>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Panel } from "@/components/ui/panel";
 import { loadTimetable, saveTimetable } from "@/lib/science/store";
 import type { TimetableEvent } from "@/lib/science/types";
 
@@ -124,7 +125,7 @@ export function CalendarPanel() {
   const pxPerMinute = trackHeight / minutesPerDay;
 
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-4 shadow-lg md:p-6">
+    <Panel className="p-4 md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Button onClick={() => setOffset((o) => o - 1)}>Previous</Button>
         <h2 className="flex-1 text-center text-lg font-bold">{weekLabel}</h2>
@@ -277,7 +278,7 @@ export function CalendarPanel() {
       </div>
 
       {modal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg/80 p-4">
           <div className="w-full max-w-md rounded-[var(--radius-lg)] border border-border bg-surface p-6">
             <h3 className="text-lg font-bold">{modal.editKey ? "Edit event" : "Add event"}</h3>
             <label className="mt-4 block text-xs text-muted">
@@ -361,6 +362,6 @@ export function CalendarPanel() {
           </div>
         </div>
       )}
-    </div>
+    </Panel>
   );
 }

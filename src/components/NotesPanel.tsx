@@ -1,15 +1,38 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { LightLab } from "@/components/labs/LightLab";
+import { CircuitLab } from "@/components/labs/CircuitLab";
+import { DecayLab } from "@/components/labs/DecayLab";
+import { SankeyLab } from "@/components/labs/SankeyLab";
+import { EnergyTools } from "@/components/tools/EnergyTools";
+import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
+import { Button } from "@/components/ui/button";
+import { Panel, PanelTitle } from "@/components/ui/panel";
 import { noteSections } from "@/data/notes";
+import { loadStats } from "@/lib/science/store";
 import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
 import type { TopicId } from "@/lib/science/types";
 import { cn } from "@/lib/utils";
-import { SpectrumStrip } from "@/components/tools/SpectrumStrip";
-import { EnergyTools } from "@/components/tools/EnergyTools";
-import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
 
-export function NotesPanel() {
+export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => void }) {
   const [filter, setFilter] = useState<TopicId | "all">("all");
   const [activeId, setActiveId] = useState(noteSections[0]?.id ?? "");
+  const [weak, setWeak] = useState<TopicId | null>(null);
+
+  useEffect(() => {
+    const stats = loadStats();
+    let worst: TopicId | null = null;
+    let rate = 2;
+    for (const id of TOPIC_ORDER) {
+      const s = stats[id];
+      if (!s || s.t < 3) continue;
+      const r = s.c / s.t;
+      if (r < rate) {
+        rate = r;
+        worst = id;
+      }
+    }
+    setWeak(worst);
+  }, []);
 
   const visible = useMemo(
     () => (filter === "all" ? noteSections : noteSections.filter((s) => s.topic === filter)),
@@ -18,13 +41,28 @@ export function NotesPanel() {
   const active = visible.find((s) => s.id === activeId) ?? visible[0];
 
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8">
-      <h2 className="text-xl font-bold">Study notes by pack</h2>
-      <p className="mt-2 text-sm text-muted">
-        Each section matches an uploaded Year 9 file set. Open a pack, then use the tools at the bottom when they appear.
-      </p>
+    <Panel>
+      <PanelTitle
+        kicker="Read"
+        title="Study notes"
+        description="Each pack matches an uploaded Year 9 file. Open a section, then use the lab at the bottom when it appears."
+      />
 
-      <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
+      {weak && onDrill && (
+        <div className="mb-6 flex flex-col gap-3 rounded-[var(--radius-md)] border border-primary/30 bg-bg px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary">A-path</p>
+            <p className="mt-1 text-sm">
+              Lowest accuracy: <strong>{catNames[weak]}</strong>. Ten questions on that pack, then re-read the notes.
+            </p>
+          </div>
+          <Button variant="action" onClick={() => onDrill(weak)}>
+            Drill this topic
+          </Button>
+        </div>
+      )}
+
+      <div className="flex gap-2 overflow-x-auto pb-1">
         <FilterChip label="All packs" on={() => setFilter("all")} active={filter === "all"} />
         {TOPIC_ORDER.map((id) => (
           <FilterChip
@@ -40,7 +78,7 @@ export function NotesPanel() {
         ))}
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[260px_1fr]">
+      <div className="mt-6 grid gap-6 lg:grid-cols-[240px_1fr]">
         <nav className="flex flex-col gap-2" aria-label="Note sections">
           {visible.map((s) => (
             <button
@@ -48,7 +86,7 @@ export function NotesPanel() {
               type="button"
               onClick={() => setActiveId(s.id)}
               className={cn(
-                "rounded-[var(--radius-md)] border px-4 py-3 text-left transition-colors",
+                "rounded-[var(--radius-sm)] border px-4 py-3 text-left transition-colors",
                 active?.id === s.id
                   ? "border-primary bg-primary/15 text-foreground"
                   : "border-border bg-bg text-muted hover:text-foreground",
@@ -120,10 +158,29 @@ export function NotesPanel() {
               </section>
             )}
 
-            {active.id === "em-spectrum" && <SpectrumStrip />}
+            {active.id === "em-spectrum" && <LightLab initial="spectrum" />}
+            {active.id === "visible-light" && <LightLab initial="spectrum" />}
+            {active.id === "reflection" && <LightLab initial="reflection" />}
+            {active.id === "refraction" && <LightLab initial="refraction" />}
+            {active.id === "colour" && <LightLab initial="colour" />}
             {active.id === "energy-work" && <EnergyTools />}
-            {active.id === "energy-sankey" && <EnergyTools mode="efficiency" />}
-            {active.id === "radio-halflife" && <HalfLifeTool />}
+            {active.id === "energy-sankey" && (
+              <div className="mt-8 space-y-8">
+                <SankeyLab />
+                <EnergyTools mode="efficiency" />
+              </div>
+            )}
+            {active.id === "radio-halflife" && (
+              <div className="mt-8 space-y-8">
+                <DecayLab />
+                <HalfLifeTool />
+              </div>
+            )}
+            {(active.id === "electricity-intro" || active.id === "electricity-circuits") && (
+              <div className="mt-8">
+                <CircuitLab />
+              </div>
+            )}
 
             <section className="mt-8 border-t border-border pt-4">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Source files</p>
@@ -138,7 +195,7 @@ export function NotesPanel() {
           </article>
         )}
       </div>
-    </div>
+    </Panel>
   );
 }
 

@@ -1,22 +1,77 @@
 import { useEffect, useState } from "react";
+import { ArrowLeft, Brain, Clock, Crosshair, Layers, Radiation, Sparkles, Zap } from "lucide-react";
+import { FormulaBlitz } from "@/components/games/FormulaBlitz";
+import { MatchGame } from "@/components/games/MatchGame";
+import { RadiationRush } from "@/components/games/RadiationRush";
+import { SpectrumSort } from "@/components/games/SpectrumSort";
+import { WeakSpot } from "@/components/games/WeakSpot";
 import { Button } from "@/components/ui/button";
+import { Panel, PanelTitle } from "@/components/ui/panel";
 import { questionsFor } from "@/lib/science/bank";
 import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
 import type { Question, TopicId } from "@/lib/science/types";
 import { shuffle } from "@/lib/utils";
 
-export function GamesPanel() {
+type GameId = "flash" | "sprint" | "match" | "spectrum" | "blitz" | "radiation" | "weak";
+
+const GAMES: { id: GameId; title: string; blurb: string; icon: typeof Brain }[] = [
+  { id: "weak", title: "Weak-spot drill", blurb: "Questions you miss, plus ones you have not tried.", icon: Crosshair },
+  { id: "match", title: "Term match", blurb: "Pair definitions until the language is automatic.", icon: Layers },
+  { id: "spectrum", title: "Spectrum order", blurb: "Radio to gamma. The sequence that always appears in exams.", icon: Sparkles },
+  { id: "blitz", title: "Formula blitz", blurb: "GPE, KE, work and efficiency — numbers until they stick.", icon: Zap },
+  { id: "radiation", title: "Radiation rush", blurb: "Alpha, beta or gamma from a property. No hesitation.", icon: Radiation },
+  { id: "flash", title: "Flashcards", blurb: "Think, then reveal. Same bank as the quizzes.", icon: Brain },
+  { id: "sprint", title: "60-second sprint", blurb: "As many multiple-choice as you can. Build speed.", icon: Clock },
+];
+
+export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null }) {
+  const [game, setGame] = useState<GameId | null>(initialGame);
+  const active = GAMES.find((g) => g.id === game);
+
+  if (!active) {
+    return (
+      <Panel>
+        <PanelTitle
+          kicker="Practice"
+          title="Study games"
+          description="Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
+        />
+        <div className="grid gap-3 sm:grid-cols-2">
+          {GAMES.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setGame(item.id)}
+                className="rounded-[var(--radius-md)] border border-border bg-bg p-5 text-left transition-colors hover:border-primary"
+              >
+                <Icon className="size-5 text-primary" />
+                <h3 className="mt-3 text-lg font-bold">{item.title}</h3>
+                <p className="mt-1 text-sm text-muted">{item.blurb}</p>
+              </button>
+            );
+          })}
+        </div>
+      </Panel>
+    );
+  }
+
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg md:p-8">
-      <h2 className="text-xl font-bold">Study games</h2>
-      <p className="mt-2 text-sm text-muted">
-        Flashcards and a 60-second sprint using the same question bank as the quizzes.
-      </p>
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
-        <Flashcards />
-        <SpeedRound />
-      </div>
-    </div>
+    <Panel>
+      <Button variant="ghost" className="mb-4 px-2" onClick={() => setGame(null)}>
+        <ArrowLeft className="size-4" />
+        All games
+      </Button>
+      <PanelTitle title={active.title} description={active.blurb} />
+      {game === "flash" && <Flashcards />}
+      {game === "sprint" && <SpeedRound />}
+      {game === "match" && <MatchGame />}
+      {game === "spectrum" && <SpectrumSort />}
+      {game === "blitz" && <FormulaBlitz />}
+      {game === "radiation" && <RadiationRush />}
+      {game === "weak" && <WeakSpot />}
+    </Panel>
   );
 }
 
@@ -27,8 +82,7 @@ function Flashcards() {
   const [show, setShow] = useState(false);
 
   function start() {
-    const pool = shuffle(questionsFor(topic)).slice(0, 15);
-    setCards(pool);
+    setCards(shuffle(questionsFor(topic)).slice(0, 15));
     setI(0);
     setShow(false);
   }
@@ -37,12 +91,10 @@ function Flashcards() {
   const answer = card ? (Array.isArray(card.a) ? card.a[0] : card.a) : "";
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-border bg-bg p-5">
-      <h3 className="font-bold">Flashcard trainer</h3>
-      <p className="mt-1 text-sm text-muted">Think of the answer, then reveal it.</p>
-      <div className="mt-4 flex flex-wrap gap-2">
+    <div>
+      <div className="flex flex-wrap gap-2">
         <select
-          className="h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm"
+          className="h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm"
           value={topic}
           onChange={(e) => setTopic(e.target.value as TopicId | "all")}
         >
@@ -54,7 +106,7 @@ function Flashcards() {
           ))}
         </select>
         <Button variant="action" onClick={start}>
-          Start
+          Deal pack
         </Button>
       </div>
       {card ? (
@@ -62,28 +114,33 @@ function Flashcards() {
           <button
             type="button"
             onClick={() => setShow((s) => !s)}
-            className="mt-4 flex min-h-[200px] w-full flex-col items-center justify-center rounded-[var(--radius-lg)] border border-border bg-surface px-6 py-8 text-center"
+            className="mt-4 flex min-h-[200px] w-full flex-col items-center justify-center rounded-[var(--radius-md)] border border-border bg-bg px-6 py-8 text-center"
           >
             <span className="text-xs font-bold uppercase tracking-wider text-primary">
               {show ? "Answer" : "Question"} · {i + 1}/{cards.length}
             </span>
             <span className="mt-3 text-lg font-bold">{show ? answer : card.q}</span>
-            <span className="mt-3 text-sm text-secondary">{show ? "Click to hide" : "Click to reveal"}</span>
+            <span className="mt-3 text-sm text-secondary">{show ? "Hide" : "Reveal"}</span>
           </button>
           <div className="mt-3 flex gap-2">
-            <Button onClick={() => { setI((i - 1 + cards.length) % cards.length); setShow(false); }}>
+            <Button
+              onClick={() => {
+                setI((i - 1 + cards.length) % cards.length);
+                setShow(false);
+              }}
+            >
               Previous
             </Button>
-            <Button variant="action" onClick={() => setShow((s) => !s)}>
-              Reveal / hide
-            </Button>
-            <Button className="ml-auto" onClick={() => { setI((i + 1) % cards.length); setShow(false); }}>
+            <Button className="ml-auto" onClick={() => {
+              setI((i + 1) % cards.length);
+              setShow(false);
+            }}>
               Next
             </Button>
           </div>
         </>
       ) : (
-        <p className="mt-6 text-sm text-muted">Press start to deal a pack of up to 15 cards.</p>
+        <p className="mt-6 text-sm text-muted">Deal a pack of up to 15 cards from the question bank.</p>
       )}
     </div>
   );
@@ -119,12 +176,11 @@ function SpeedRound() {
   }
 
   function start() {
-    const nextPool = shuffle(questionsFor("all").filter((q) => q.type === "mcq"));
     setTime(60);
     setScore(0);
     setStreak(0);
     setActive(true);
-    deal(nextPool);
+    deal(shuffle(questionsFor("all").filter((q) => q.type === "mcq")));
   }
 
   function answer(opt: string) {
@@ -140,10 +196,8 @@ function SpeedRound() {
   }
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-border bg-bg p-5">
-      <h3 className="font-bold">60-second science sprint</h3>
-      <p className="mt-1 text-sm text-muted">Answer as many multiple-choice questions as you can.</p>
-      <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
+    <div>
+      <div className="grid grid-cols-3 gap-2 text-sm">
         <Stat label="Time" value={String(time)} />
         <Stat label="Score" value={String(score)} />
         <Stat label="Streak" value={String(streak)} />
@@ -164,7 +218,7 @@ function SpeedRound() {
             </div>
           </>
         ) : !active && time === 0 ? (
-          <p className="rounded-[var(--radius-sm)] border border-success bg-success/15 p-3 text-success">
+          <p className="rounded-[var(--radius-sm)] border border-success/40 bg-success/10 p-3 text-success">
             Time. Final score: <strong>{score}</strong>
           </p>
         ) : null}
@@ -175,9 +229,9 @@ function SpeedRound() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between rounded-[var(--radius-sm)] bg-surface-hover px-3 py-2">
+    <div className="flex items-center justify-between rounded-[var(--radius-sm)] bg-bg px-3 py-2">
       <span className="text-muted">{label}</span>
-      <strong className="font-mono">{value}</strong>
+      <strong className="font-mono tabular-nums">{value}</strong>
     </div>
   );
 }
