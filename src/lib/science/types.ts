@@ -1,5 +1,7 @@
 export type QuestionType = "mcq" | "text";
 
+export type SubjectId = "science" | "maths";
+
 export type Question = {
   cat: string;
   type: QuestionType;
@@ -21,7 +23,14 @@ export type TopicId =
   | "reproduction"
   | "chemistry"
   | "carbon"
-  | "body";
+  | "body"
+  | "tpform"
+  | "intercepts"
+  | "factorform"
+  | "expanding"
+  | "factorising"
+  | "completedsquare"
+  | "quadraticformula";
 
 export type CatStats = { c: number; t: number };
 

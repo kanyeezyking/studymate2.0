@@ -1,6 +1,6 @@
-import type { TopicId } from "./types";
+import type { SubjectId, TopicId } from "./types";
 
-export const TOPIC_ORDER: TopicId[] = [
+export const SCIENCE_TOPICS: TopicId[] = [
   "energy",
   "heat",
   "sound",
@@ -15,6 +15,22 @@ export const TOPIC_ORDER: TopicId[] = [
   "carbon",
 ];
 
+export const MATHS_TOPICS: TopicId[] = [
+  "tpform",
+  "intercepts",
+  "factorform",
+  "expanding",
+  "factorising",
+  "completedsquare",
+  "quadraticformula",
+];
+
+export const TOPIC_ORDER: TopicId[] = [...SCIENCE_TOPICS, ...MATHS_TOPICS];
+
+export function topicsFor(subject: SubjectId): TopicId[] {
+  return subject === "maths" ? MATHS_TOPICS : SCIENCE_TOPICS;
+}
+
 export const catNames: Record<TopicId, string> = {
   energy: "Energy & Transformations",
   heat: "Heat Transfer & Insulation",
@@ -28,6 +44,13 @@ export const catNames: Record<TopicId, string> = {
   chemistry: "Chem: Atomic Structure & Reactions",
   carbon: "Earth: Carbon Cycle",
   body: "Bio: Body Regulation",
+  tpform: "Turning point form",
+  intercepts: "Crossing the axes",
+  factorform: "Factor form",
+  expanding: "Expanding",
+  factorising: "Factorising",
+  completedsquare: "Completing the square",
+  quadraticformula: "General form & formula",
 };
 
 export const topicBlurb: Record<TopicId, string> = {
@@ -43,4 +66,16 @@ export const topicBlurb: Record<TopicId, string> = {
   chemistry: "Atoms, ions, reactions, acids and the 2026 chemistry pack.",
   carbon: "Carbon cycle, photosynthesis, respiration and Earth's spheres.",
   body: "Nervous and endocrine systems, homeostasis and coordination.",
+  tpform: "Read a, h and k. Turning point, opening, skinny vs wide.",
+  intercepts: "Y-intercept, solving (x − h)² = c, and x-intercepts.",
+  factorform: "Null factor law, roots, axis from the midpoint, sign of a.",
+  expanding: "Box / FOIL, squares, difference of squares, outside multipliers.",
+  factorising: "Monic pairs, DOTS, perfect squares, non-monic ac method.",
+  completedsquare: "Rewrite general form to reveal the turning point.",
+  quadraticformula: "ax² + bx + c, axis −b/2a, discriminant and roots.",
 };
+
+export const SUBJECTS: { id: SubjectId; label: string; blurb: string }[] = [
+  { id: "science", label: "Science", blurb: "Light, energy, electricity, radioactivity." },
+  { id: "maths", label: "Maths", blurb: "Quadratics first. More units when you send them." },
+];

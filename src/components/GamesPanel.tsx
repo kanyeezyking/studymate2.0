@@ -8,11 +8,15 @@ import { WeakSpot } from "@/components/games/WeakSpot";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
 import { questionsFor } from "@/lib/science/bank";
-import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
+import { useSubject } from "@/lib/science/subject";
+import { catNames, topicsFor } from "@/lib/science/topics";
 import type { Question, TopicId } from "@/lib/science/types";
 import { shuffle } from "@/lib/utils";
 
 type GameId = "flash" | "sprint" | "match" | "spectrum" | "blitz" | "radiation" | "weak";
+
+const SCIENCE_GAMES: GameId[] = ["weak", "match", "spectrum", "blitz", "radiation", "flash", "sprint"];
+const MATHS_GAMES: GameId[] = ["weak", "match", "flash", "sprint"];
 
 const GAMES: { id: GameId; title: string; blurb: string; icon: typeof Brain }[] = [
   { id: "weak", title: "Weak-spot drill", blurb: "Questions you miss, plus ones you have not tried.", icon: Crosshair },
@@ -25,8 +29,15 @@ const GAMES: { id: GameId; title: string; blurb: string; icon: typeof Brain }[] 
 ];
 
 export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null }) {
+  const subject = useSubject();
+  const allowed = subject === "maths" ? MATHS_GAMES : SCIENCE_GAMES;
   const [game, setGame] = useState<GameId | null>(initialGame);
-  const active = GAMES.find((g) => g.id === game);
+  const visible = GAMES.filter((g) => allowed.includes(g.id));
+  const active = GAMES.find((g) => g.id === game && allowed.includes(g.id));
+
+  useEffect(() => {
+    setGame(null);
+  }, [subject]);
 
   if (!active) {
     return (
@@ -34,10 +45,14 @@ export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null
         <PanelTitle
           kicker="Practice"
           title="Study games"
-          description="Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
+          description={
+            subject === "maths"
+              ? "Short loops on the quadratics pack. Weak-spot drill first if you have already sat a quiz."
+              : "Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
+          }
         />
         <div className="grid gap-3 sm:grid-cols-2">
-          {GAMES.map((item) => {
+          {visible.map((item) => {
             const Icon = item.icon;
             return (
               <button
@@ -76,13 +91,15 @@ export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null
 }
 
 function Flashcards() {
+  const subject = useSubject();
+  const topics = topicsFor(subject);
   const [topic, setTopic] = useState<TopicId | "all">("all");
   const [cards, setCards] = useState<Question[]>([]);
   const [i, setI] = useState(0);
   const [show, setShow] = useState(false);
 
   function start() {
-    setCards(shuffle(questionsFor(topic)).slice(0, 15));
+    setCards(shuffle(questionsFor(topic, subject)).slice(0, 15));
     setI(0);
     setShow(false);
   }
@@ -99,7 +116,7 @@ function Flashcards() {
           onChange={(e) => setTopic(e.target.value as TopicId | "all")}
         >
           <option value="all">All topics</option>
-          {TOPIC_ORDER.map((id) => (
+          {topics.map((id) => (
             <option key={id} value={id}>
               {catNames[id]}
             </option>
@@ -147,6 +164,7 @@ function Flashcards() {
 }
 
 function SpeedRound() {
+  const subject = useSubject();
   const [time, setTime] = useState(60);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -172,7 +190,7 @@ function SpeedRound() {
     const next = from[from.length - 1];
     const rest = from.slice(0, -1);
     setCurrent(next ?? null);
-    setPool(rest.length ? rest : shuffle(questionsFor("all").filter((q) => q.type === "mcq")));
+    setPool(rest.length ? rest : shuffle(questionsFor("all", subject).filter((q) => q.type === "mcq")));
   }
 
   function start() {
@@ -180,7 +198,7 @@ function SpeedRound() {
     setScore(0);
     setStreak(0);
     setActive(true);
-    deal(shuffle(questionsFor("all").filter((q) => q.type === "mcq")));
+    deal(shuffle(questionsFor("all", subject).filter((q) => q.type === "mcq")));
   }
 
   function answer(opt: string) {

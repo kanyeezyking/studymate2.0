@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
 import { questionsFor } from "@/lib/science/bank";
 import { clearStats, loadQuestionStats, loadStats } from "@/lib/science/store";
-import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
+import { useSubject } from "@/lib/science/subject";
+import { catNames, topicsFor } from "@/lib/science/topics";
 import type { CatStats, TopicId } from "@/lib/science/types";
 import { cn } from "@/lib/utils";
 
 export function PerformancePanel() {
+  const subject = useSubject();
+  const topics = topicsFor(subject);
   const [tick, setTick] = useState(0);
   const [open, setOpen] = useState<TopicId | null>(null);
   const [stats, setStats] = useState<Record<TopicId, CatStats> | null>(null);
@@ -34,7 +37,7 @@ export function PerformancePanel() {
         description="Weak areas show amber or red. Tap a topic to see every question. Games and quizzes both write here."
       />
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-        {TOPIC_ORDER.map((key) => {
+        {topics.map((key) => {
           const data = stats?.[key] ?? { c: 0, t: 0 };
           const percent = data.t === 0 ? 0 : Math.round((data.c / data.t) * 100);
           let status = "No data yet";

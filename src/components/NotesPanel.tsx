@@ -3,26 +3,38 @@ import { LightLab } from "@/components/labs/LightLab";
 import { CircuitLab } from "@/components/labs/CircuitLab";
 import { DecayLab } from "@/components/labs/DecayLab";
 import { SankeyLab } from "@/components/labs/SankeyLab";
+import { FeaturesGrid } from "@/components/labs/FeaturesGrid";
 import { EnergyTools } from "@/components/tools/EnergyTools";
 import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
+import { mathNotes } from "@/data/math-notes";
 import { noteSections } from "@/data/notes";
 import { loadStats } from "@/lib/science/store";
-import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
+import { useSubject } from "@/lib/science/subject";
+import { catNames, topicsFor } from "@/lib/science/topics";
 import type { TopicId } from "@/lib/science/types";
 import { cn } from "@/lib/utils";
 
 export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => void }) {
+  const subject = useSubject();
+  const catalog = subject === "maths" ? mathNotes : noteSections;
+  const order = topicsFor(subject);
   const [filter, setFilter] = useState<TopicId | "all">("all");
-  const [activeId, setActiveId] = useState(noteSections[0]?.id ?? "");
+  const [activeId, setActiveId] = useState(catalog[0]?.id ?? "");
   const [weak, setWeak] = useState<TopicId | null>(null);
+  const single = catalog.length === 1;
+
+  useEffect(() => {
+    setFilter("all");
+    setActiveId(catalog[0]?.id ?? "");
+  }, [subject, catalog]);
 
   useEffect(() => {
     const stats = loadStats();
     let worst: TopicId | null = null;
     let rate = 2;
-    for (const id of TOPIC_ORDER) {
+    for (const id of order) {
       const s = stats[id];
       if (!s || s.t < 3) continue;
       const r = s.c / s.t;
@@ -32,11 +44,11 @@ export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => 
       }
     }
     setWeak(worst);
-  }, []);
+  }, [order]);
 
   const visible = useMemo(
-    () => (filter === "all" ? noteSections : noteSections.filter((s) => s.topic === filter)),
-    [filter],
+    () => (filter === "all" ? catalog : catalog.filter((s) => s.topic === filter)),
+    [filter, catalog],
   );
   const active = visible.find((s) => s.id === activeId) ?? visible[0];
 
@@ -44,8 +56,12 @@ export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => 
     <Panel>
       <PanelTitle
         kicker="Read"
-        title="Study notes"
-        description="Each pack matches an uploaded Year 9 file. Open a section, then use the lab at the bottom when it appears."
+        title={subject === "maths" ? "Maths notes" : "Study notes"}
+        description={
+          subject === "maths"
+            ? "Quadratics as one unit. Learn the features grid first, then the forms underneath."
+            : "Each pack matches an uploaded file. Open a section, then use the lab at the bottom when it appears."
+        }
       />
 
       {weak && onDrill && (
@@ -62,47 +78,55 @@ export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => 
         </div>
       )}
 
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        <FilterChip label="All packs" on={() => setFilter("all")} active={filter === "all"} />
-        {TOPIC_ORDER.map((id) => (
-          <FilterChip
-            key={id}
-            label={catNames[id]}
-            on={() => {
-              setFilter(id);
-              const first = noteSections.find((s) => s.topic === id);
-              if (first) setActiveId(first.id);
-            }}
-            active={filter === id}
-          />
-        ))}
-      </div>
-
-      <div className="mt-6 grid gap-6 lg:grid-cols-[240px_1fr]">
-        <nav className="flex flex-col gap-2" aria-label="Note sections">
-          {visible.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => setActiveId(s.id)}
-              className={cn(
-                "rounded-[var(--radius-sm)] border px-4 py-3 text-left transition-colors",
-                active?.id === s.id
-                  ? "border-primary bg-primary/15 text-foreground"
-                  : "border-border bg-bg text-muted hover:text-foreground",
-              )}
-            >
-              <span className="block text-sm font-bold text-foreground">{s.title}</span>
-              <span className="mt-1 block text-xs text-muted">{s.pack}</span>
-            </button>
+      {subject !== "maths" && (
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          <FilterChip label="All packs" on={() => setFilter("all")} active={filter === "all"} />
+          {order.map((id) => (
+            <FilterChip
+              key={id}
+              label={catNames[id]}
+              on={() => {
+                setFilter(id);
+                const first = catalog.find((s) => s.topic === id);
+                if (first) setActiveId(first.id);
+              }}
+              active={filter === id}
+            />
           ))}
-        </nav>
+        </div>
+      )}
+
+      <div className={cn("mt-6 grid gap-6", single ? "" : "lg:grid-cols-[240px_1fr]")}>
+        {!single && (
+          <nav className="flex flex-col gap-2" aria-label="Note sections">
+            {visible.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => setActiveId(s.id)}
+                className={cn(
+                  "rounded-[var(--radius-sm)] border px-4 py-3 text-left transition-colors",
+                  active?.id === s.id
+                    ? "border-primary bg-primary/15 text-foreground"
+                    : "border-border bg-bg text-muted hover:text-foreground",
+                )}
+              >
+                <span className="block text-sm font-bold text-foreground">{s.title}</span>
+                <span className="mt-1 block text-xs text-muted">{s.pack}</span>
+              </button>
+            ))}
+          </nav>
+        )}
 
         {active && (
           <article className="fade-in min-w-0 rounded-[var(--radius-md)] border border-border bg-bg p-5 md:p-6">
-            <p className="text-xs font-bold uppercase tracking-wider text-primary">{catNames[active.topic]}</p>
-            <h3 className="mt-1 text-2xl font-bold">{active.title}</h3>
+            {subject !== "maths" && (
+              <p className="text-xs font-bold uppercase tracking-wider text-primary">{catNames[active.topic]}</p>
+            )}
+            <h3 className="text-2xl font-bold">{active.title}</h3>
             <p className="mt-3 text-muted">{active.summary}</p>
+
+            {active.id === "quadratics" && <FeaturesGrid />}
 
             {active.blocks.map((block) => (
               <section key={block.heading} className="mt-6">

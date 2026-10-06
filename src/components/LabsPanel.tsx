@@ -3,11 +3,13 @@ import { ArrowLeft, Atom, Lightbulb, Spline, Zap } from "lucide-react";
 import { CircuitLab } from "@/components/labs/CircuitLab";
 import { DecayLab } from "@/components/labs/DecayLab";
 import { LightLab, type LightMode } from "@/components/labs/LightLab";
+import { ParabolaLab } from "@/components/labs/ParabolaLab";
 import { SankeyLab } from "@/components/labs/SankeyLab";
 import { EnergyTools } from "@/components/tools/EnergyTools";
 import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
+import { useSubject } from "@/lib/science/subject";
 
 export type LabId = "light" | "circuit" | "sankey" | "decay";
 
@@ -39,7 +41,22 @@ const LABS: { id: LabId; title: string; blurb: string; icon: typeof Lightbulb }[
 ];
 
 export function LabsPanel({ initialLab = null }: { initialLab?: LabId | null }) {
+  const subject = useSubject();
   const [lab, setLab] = useState<LabId | null>(initialLab);
+
+  if (subject === "maths") {
+    return (
+      <Panel>
+        <PanelTitle
+          kicker="Interactive"
+          title="Parabola lab"
+          description="Drag a, h and k (or the roots) and watch the parabola move. The formula grid lives in Notes — these are the numbers for this graph."
+        />
+        <ParabolaLab />
+      </Panel>
+    );
+  }
+
   const active = LABS.find((l) => l.id === lab);
 
   if (!active) {

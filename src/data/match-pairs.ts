@@ -63,4 +63,52 @@ export const MATCH_SETS: { id: TopicId | "mix"; label: string; pairs: MatchPair[
       { term: "Ionising radiation", def: "Radiation that can knock electrons off atoms and damage DNA" },
     ],
   },
+  {
+    id: "tpform",
+    label: "Turning point form",
+    pairs: [
+      { term: "y = a(x − h)² + k", def: "Turning point form; vertex is (h, k)" },
+      { term: "h", def: "x-coordinate of the turning point; axis is x = h" },
+      { term: "k", def: "y-coordinate of the turning point; min or max value" },
+      { term: "a > 0", def: "Opens upward; turning point is a minimum" },
+      { term: "a < 0", def: "Opens downward; turning point is a maximum" },
+      { term: "|a| > 1", def: "Narrower / skinnier than y = x²" },
+    ],
+  },
+  {
+    id: "factorform",
+    label: "Factor form",
+    pairs: [
+      { term: "Null factor law", def: "If AB = 0 then A = 0 or B = 0" },
+      { term: "y = a(x − p)(x − q)", def: "Factor form; x-intercepts at p and q" },
+      { term: "Axis from roots", def: "x = (p + q) / 2, the midpoint" },
+      { term: "Repeated root", def: "Both factors the same; graph touches the axis" },
+      { term: "y-intercept from factors", def: "Put x = 0 to get apq" },
+      { term: "Sign of a", def: "Flips max/min without moving the x-intercepts" },
+    ],
+  },
+  {
+    id: "factorising",
+    label: "Factorising",
+    pairs: [
+      { term: "Monic pair", def: "Two numbers with the right product (c) and sum (b)" },
+      { term: "DOTS", def: "x² − k² = (x − k)(x + k)" },
+      { term: "Perfect square", def: "x² ± 2kx + k² = (x ± k)²" },
+      { term: "ac method", def: "Pair with product ac and sum b, then box" },
+      { term: "HCF first", def: "Pull a common factor out; roots stay the same" },
+      { term: "x² + k²", def: "Not DOTS; no real linear factors" },
+    ],
+  },
+  {
+    id: "quadraticformula",
+    label: "General form",
+    pairs: [
+      { term: "y = ax² + bx + c", def: "General form; y-intercept is (0, c)" },
+      { term: "Axis formula", def: "x = −b / 2a" },
+      { term: "Quadratic formula", def: "x = (−b ± √(b² − 4ac)) / 2a" },
+      { term: "Δ > 0", def: "Two distinct real x-intercepts" },
+      { term: "Δ = 0", def: "One real root; graph touches the axis" },
+      { term: "Δ < 0", def: "No real x-intercepts" },
+    ],
+  },
 ];

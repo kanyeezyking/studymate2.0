@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
-import { qBank, questionsFor } from "@/lib/science/bank";
+import { questionsFor } from "@/lib/science/bank";
 import { saveQuizResults } from "@/lib/science/store";
-import { catNames, TOPIC_ORDER } from "@/lib/science/topics";
+import { useSubject } from "@/lib/science/subject";
+import { catNames, topicsFor } from "@/lib/science/topics";
 import type { Question, TopicId } from "@/lib/science/types";
 import { answersMatch, shuffle } from "@/lib/utils";
 
 type QuizItem = Question & { userAns?: string; answered?: boolean };
 
 export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "all" | string }) {
+  const subject = useSubject();
+  const topics = topicsFor(subject);
   const [topic, setTopic] = useState<TopicId | "all">(
     initialTopic === "all" ? "all" : (initialTopic as TopicId),
   );
@@ -28,10 +31,14 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
     if (initialTopic && initialTopic !== "all") setTopic(initialTopic as TopicId);
   }, [initialTopic]);
 
-  const available = useMemo(() => questionsFor(topic).length, [topic]);
+  useEffect(() => {
+    if (topic !== "all" && !topics.includes(topic)) setTopic("all");
+  }, [subject, topics, topic]);
+
+  const available = useMemo(() => questionsFor(topic, subject).length, [topic, subject]);
 
   function start() {
-    const pool = shuffle(questionsFor(topic));
+    const pool = shuffle(questionsFor(topic, subject));
     const n = Math.min(length, pool.length);
     setItems(pool.slice(0, n).map((q) => ({ ...q, options: q.options ? shuffle(q.options) : q.options })));
     setSubmitted(false);
@@ -79,7 +86,7 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
       <PanelTitle
         kicker="Test"
         title="Smart quizzes"
-        description={`${qBank.length} questions from the Year 9 packs. Results save to Progress. Exam mode adds a clock and auto-submits.`}
+        description={`${available} questions in this subject. Results save to Progress. Exam mode adds a clock and auto-submits.`}
       />
       <div className="flex flex-wrap gap-3">
         <select
@@ -88,8 +95,8 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
           onChange={(e) => setTopic(e.target.value as TopicId | "all")}
           aria-label="Quiz topic"
         >
-          <option value="all">Mix all topics ({qBank.length})</option>
-          {TOPIC_ORDER.map((id) => (
+          <option value="all">Mix this subject ({questionsFor("all", subject).length})</option>
+          {topics.map((id) => (
             <option key={id} value={id}>
               {catNames[id]}
             </option>

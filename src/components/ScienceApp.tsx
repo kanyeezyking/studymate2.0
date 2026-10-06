@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Atom,
   BarChart3,
@@ -15,8 +15,12 @@ import { LabsPanel } from "@/components/LabsPanel";
 import { NotesPanel } from "@/components/NotesPanel";
 import { PerformancePanel } from "@/components/PerformancePanel";
 import { QuizPanel } from "@/components/QuizPanel";
-import { qBank } from "@/lib/science/bank";
+import { questionsFor } from "@/lib/science/bank";
+import { mathNotes } from "@/data/math-notes";
 import { noteSections } from "@/data/notes";
+import { SubjectProvider } from "@/lib/science/subject";
+import { SUBJECTS } from "@/lib/science/topics";
+import type { SubjectId } from "@/lib/science/types";
 import { cn } from "@/lib/utils";
 
 type Tab = "notes" | "quizzes" | "labs" | "games" | "stats" | "calendar";
@@ -30,41 +34,44 @@ const TABS: { id: Tab; label: string; icon: typeof BookOpenText }[] = [
   { id: "calendar", label: "Planner", icon: CalendarDays },
 ];
 
+const SUBJECT_KEY = "studymate-subject";
+
 export function ScienceApp() {
+  const [subject, setSubject] = useState<SubjectId>("science");
   const [tab, setTab] = useState<Tab>("notes");
   const [quizTopic, setQuizTopic] = useState<"all" | string>("all");
-  const counts = useMemo(
-    () => ({ notes: noteSections.length, questions: qBank.length }),
-    [],
-  );
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(SUBJECT_KEY);
+      if (stored === "science" || stored === "maths") setSubject(stored);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  function chooseSubject(id: SubjectId) {
+    setSubject(id);
+    setQuizTopic("all");
+    try {
+      localStorage.setItem(SUBJECT_KEY, id);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  const counts = useMemo(() => {
+    const notes = subject === "maths" ? mathNotes.length : noteSections.length;
+    return { notes, questions: questionsFor("all", subject).length };
+  }, [subject]);
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-6xl flex-col lg:flex-row">
-      <aside className="hidden w-60 shrink-0 flex-col border-r border-border px-5 py-8 lg:flex">
-        <Wordmark />
-        <p className="mt-3 text-xs leading-relaxed text-muted">
-          Year 9 science companion. Notes, labs and drills from your class packs.
-        </p>
-        <nav className="mt-8 flex flex-col gap-1" aria-label="StudyMate">
-          {TABS.map((item) => (
-            <NavBtn
-              key={item.id}
-              active={tab === item.id}
-              onClick={() => setTab(item.id)}
-              icon={<item.icon className="size-4" />}
-              label={item.label}
-            />
-          ))}
-        </nav>
-        <p className="mt-auto pt-8 text-xs text-muted">
-          {counts.notes} note packs · {counts.questions} questions
-        </p>
-      </aside>
-
-      <div className="min-w-0 flex-1">
-        <header className="sticky top-0 z-20 border-b border-border bg-bg/90 px-4 py-3 backdrop-blur-md lg:hidden">
+    <SubjectProvider value={subject}>
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col lg:flex-row">
+        <aside className="hidden w-60 shrink-0 flex-col border-r border-border px-5 py-8 lg:flex">
           <Wordmark />
-          <nav className="-mx-1 mt-3 flex gap-1 overflow-x-auto pb-1" aria-label="StudyMate">
+          <SubjectSwitch subject={subject} onChange={chooseSubject} />
+          <nav className="mt-6 flex flex-col gap-1" aria-label="StudyMate">
             {TABS.map((item) => (
               <NavBtn
                 key={item.id}
@@ -72,31 +79,52 @@ export function ScienceApp() {
                 onClick={() => setTab(item.id)}
                 icon={<item.icon className="size-4" />}
                 label={item.label}
-                compact
               />
             ))}
           </nav>
-        </header>
+          <p className="mt-auto pt-8 text-xs text-muted">
+            {counts.notes} {counts.notes === 1 ? "unit" : "note packs"} · {counts.questions} questions
+          </p>
+        </aside>
 
-        <div className="px-4 py-6 md:px-8 md:py-8">
-          <div className="fade-in" key={tab}>
-            {tab === "notes" && (
-              <NotesPanel
-                onDrill={(topic) => {
-                  setQuizTopic(topic);
-                  setTab("quizzes");
-                }}
-              />
-            )}
-            {tab === "quizzes" && <QuizPanel initialTopic={quizTopic} />}
-            {tab === "labs" && <LabsPanel />}
-            {tab === "games" && <GamesPanel />}
-            {tab === "stats" && <PerformancePanel />}
-            {tab === "calendar" && <CalendarPanel />}
+        <div className="min-w-0 flex-1">
+          <header className="sticky top-0 z-20 border-b border-border bg-bg/90 px-4 py-3 backdrop-blur-md lg:hidden">
+            <Wordmark />
+            <SubjectSwitch subject={subject} onChange={chooseSubject} compact />
+            <nav className="-mx-1 mt-3 flex gap-1 overflow-x-auto pb-1" aria-label="StudyMate">
+              {TABS.map((item) => (
+                <NavBtn
+                  key={item.id}
+                  active={tab === item.id}
+                  onClick={() => setTab(item.id)}
+                  icon={<item.icon className="size-4" />}
+                  label={item.label}
+                  compact
+                />
+              ))}
+            </nav>
+          </header>
+
+          <div className="px-4 py-6 md:px-8 md:py-8">
+            <div className="fade-in" key={`${subject}-${tab}`}>
+              {tab === "notes" && (
+                <NotesPanel
+                  onDrill={(topic) => {
+                    setQuizTopic(topic);
+                    setTab("quizzes");
+                  }}
+                />
+              )}
+              {tab === "quizzes" && <QuizPanel initialTopic={quizTopic} />}
+              {tab === "labs" && <LabsPanel />}
+              {tab === "games" && <GamesPanel />}
+              {tab === "stats" && <PerformancePanel />}
+              {tab === "calendar" && <CalendarPanel />}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </SubjectProvider>
   );
 }
 
@@ -104,12 +132,39 @@ function Wordmark() {
   return (
     <div className="flex items-center gap-3">
       <BrandMark />
-      <div>
-        <p className="font-display text-xl font-bold leading-none tracking-tight">
-          Study<span className="text-primary">Mate</span>
-        </p>
-        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted">Year 9 science</p>
-      </div>
+      <p className="font-display text-xl font-bold leading-none tracking-tight">
+        Study<span className="text-primary">Mate</span>
+      </p>
+    </div>
+  );
+}
+
+function SubjectSwitch({
+  subject,
+  onChange,
+  compact,
+}: {
+  subject: SubjectId;
+  onChange: (id: SubjectId) => void;
+  compact?: boolean;
+}) {
+  return (
+    <div className={cn("grid grid-cols-2 gap-1 rounded-[var(--radius-sm)] border border-border bg-bg p-1", compact ? "mt-3" : "mt-5")}>
+      {SUBJECTS.map((item) => (
+        <button
+          key={item.id}
+          type="button"
+          onClick={() => onChange(item.id)}
+          className={cn(
+            "h-10 rounded-[var(--radius-sm)] text-sm font-semibold",
+            subject === item.id
+              ? "bg-primary text-primary-foreground"
+              : "text-muted hover:text-foreground",
+          )}
+        >
+          {item.label}
+        </button>
+      ))}
     </div>
   );
 }
