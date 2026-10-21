@@ -23,6 +23,8 @@ export const MATHS_TOPICS: TopicId[] = [
   "factorising",
   "completedsquare",
   "quadraticformula",
+  "probability",
+  "measurement",
 ];
 
 export const TOPIC_ORDER: TopicId[] = [...SCIENCE_TOPICS, ...MATHS_TOPICS];
@@ -51,6 +53,8 @@ export const catNames: Record<TopicId, string> = {
   factorising: "Factorising",
   completedsquare: "Completing the square",
   quadraticformula: "General form & formula",
+  probability: "Probability",
+  measurement: "Measurement",
 };
 
 export const topicBlurb: Record<TopicId, string> = {
@@ -73,9 +77,11 @@ export const topicBlurb: Record<TopicId, string> = {
   factorising: "Monic pairs, DOTS, perfect squares, non-monic ac method.",
   completedsquare: "Rewrite general form to reveal the turning point.",
   quadraticformula: "ax² + bx + c, axis −b/2a, discriminant and roots.",
+  probability: "Venn diagrams, two-way tables, trees, the addition rule, and conditional probability.",
+  measurement: "Composite area, surface area, volume, spheres, and limits of accuracy.",
 };
 
 export const SUBJECTS: { id: SubjectId; label: string; blurb: string }[] = [
   { id: "science", label: "Science", blurb: "Light, energy, electricity, radioactivity." },
-  { id: "maths", label: "Maths", blurb: "Quadratics first. More units when you send them." },
+  { id: "maths", label: "Maths", blurb: "Quadratics, probability and measurement." },
 ];

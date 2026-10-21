@@ -47,7 +47,7 @@ export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null
           title="Study games"
           description={
             subject === "maths"
-              ? "Short loops on the quadratics pack. Weak-spot drill first if you have already sat a quiz."
+              ? "Short loops on the maths units. Weak-spot drill first if you have already sat a quiz."
               : "Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
           }
         />

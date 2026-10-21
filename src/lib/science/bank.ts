@@ -1,10 +1,18 @@
 import { existingQuestions } from "@/data/existing-questions";
 import { extraQuestions } from "@/data/extra-questions";
 import { mathQuestions } from "@/data/math-questions";
+import { measureQuestions } from "@/data/measure-questions";
+import { probQuestions } from "@/data/prob-questions";
 import { catNames, topicsFor, TOPIC_ORDER } from "./topics";
 import type { Question, SubjectId, TopicId } from "./types";
 
-export const qBank: Question[] = [...existingQuestions, ...extraQuestions, ...mathQuestions];
+export const qBank: Question[] = [
+  ...existingQuestions,
+  ...extraQuestions,
+  ...mathQuestions,
+  ...probQuestions,
+  ...measureQuestions,
+];
 
 export function questionsFor(topic: TopicId | "all", subject?: SubjectId): Question[] {
   const cats = subject ? topicsFor(subject) : TOPIC_ORDER;

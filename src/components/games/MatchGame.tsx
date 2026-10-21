@@ -1,14 +1,24 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MATCH_SETS } from "@/data/match-pairs";
 import { Button } from "@/components/ui/button";
 import { saveQuizResults } from "@/lib/science/store";
+import { useSubject } from "@/lib/science/subject";
+import { MATHS_TOPICS, SCIENCE_TOPICS } from "@/lib/science/topics";
 import type { TopicId } from "@/lib/science/types";
 import { cn, shuffle } from "@/lib/utils";
 
 type Card = { id: string; text: string; pair: string; side: "term" | "def" };
 
 export function MatchGame() {
-  const [setId, setSetId] = useState(MATCH_SETS[0]!.id);
+  const subject = useSubject();
+  const packs = MATCH_SETS.filter((s) =>
+    subject === "maths" ? MATHS_TOPICS.includes(s.id as TopicId) : SCIENCE_TOPICS.includes(s.id as TopicId) || s.id === "mix",
+  );
+  const [setId, setSetId] = useState(packs[0]!.id);
+
+  useEffect(() => {
+    setSetId(packs[0]!.id);
+  }, [subject]);
   const [left, setLeft] = useState<Card[]>([]);
   const [right, setRight] = useState<Card[]>([]);
   const [pick, setPick] = useState<Card | null>(null);
@@ -16,7 +26,7 @@ export function MatchGame() {
   const [wrong, setWrong] = useState<string[]>([]);
   const [misses, setMisses] = useState(0);
 
-  const pack = MATCH_SETS.find((s) => s.id === setId)!;
+  const pack = packs.find((s) => s.id === setId) ?? packs[0]!;
   const done = left.length > 0 && matched.length === left.length;
 
   function start() {
@@ -76,7 +86,7 @@ export function MatchGame() {
           value={setId}
           onChange={(e) => setSetId(e.target.value as typeof setId)}
         >
-          {MATCH_SETS.map((s) => (
+          {packs.map((s) => (
             <option key={s.id} value={s.id}>
               {s.label}
             </option>

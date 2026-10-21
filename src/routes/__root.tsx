@@ -15,7 +15,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "StudyMate — Year 9 science notes, labs, quizzes and games built from class packs. Light, energy, electricity and radioactivity.",
+          "StudyMate — notes, labs, quizzes and games. Science and maths, starting with Year 9 packs.",
       },
     ],
     links: [

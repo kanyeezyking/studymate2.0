@@ -1,15 +1,18 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { qBank } from "@/lib/science/bank";
+import { questionsFor } from "@/lib/science/bank";
 import { loadQuestionStats, saveQuizResults } from "@/lib/science/store";
+import { useSubject } from "@/lib/science/subject";
 import { catNames } from "@/lib/science/topics";
 import type { Question, TopicId } from "@/lib/science/types";
 import { answersMatch, shuffle } from "@/lib/utils";
 
 export function WeakSpot() {
+  const subject = useSubject();
   const weak = useMemo(() => {
     const stats = loadQuestionStats();
-    const ranked = qBank
+    const bank = questionsFor("all", subject);
+    const ranked = bank
       .map((q) => {
         const s = stats[q.q];
         const rate = s && s.t > 0 ? s.c / s.t : null;
@@ -17,10 +20,10 @@ export function WeakSpot() {
       })
       .filter((x) => x.t > 0 && (x.rate ?? 1) < 0.75)
       .sort((a, b) => (a.rate ?? 0) - (b.rate ?? 0) || b.t - a.t);
-    const unseen = qBank.filter((q) => !stats[q.q] || stats[q.q]!.t === 0);
+    const unseen = bank.filter((q) => !stats[q.q] || stats[q.q]!.t === 0);
     const pool = [...ranked.map((r) => r.q), ...shuffle(unseen).slice(0, 6)];
     return shuffle(pool).slice(0, 10);
-  }, []);
+  }, [subject]);
 
   const [items, setItems] = useState<Question[]>(weak);
   const [i, setI] = useState(0);

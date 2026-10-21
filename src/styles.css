@@ -6,11 +6,11 @@
   --color-surface-hover: #163044;
   --color-foreground: #e8f1f6;
   --color-muted: #8aa4b5;
-  --color-primary: #4ec8f0;
-  --color-primary-hover: #7ad7f4;
+  --color-primary: #3dd6a3;
+  --color-primary-hover: #6ae8bc;
   --color-primary-foreground: #07131c;
-  --color-secondary: #3dd6a3;
-  --color-secondary-hover: #2fbe8e;
+  --color-secondary: #4ec8f0;
+  --color-secondary-hover: #7ad7f4;
   --color-secondary-foreground: #07131c;
   --color-border: #1e3a4c;
   --color-success: #3dd6a3;
@@ -19,7 +19,7 @@
   --color-danger-foreground: #07131c;
   --color-warning: #e6b84d;
   --color-warning-foreground: #07131c;
-  --color-ring: #4ec8f0;
+  --color-ring: #3dd6a3;
   --color-card: #0e1d2b;
   --color-em-radio: #3a7bd5;
   --color-em-micro: #22d3ee;
@@ -37,6 +37,15 @@
   --motion-quick: 150ms;
   --motion-fast: 250ms;
   --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-foreground) 8%, transparent);
+}
+
+/* Science is the default (green). Maths keeps the blue primary. */
+html[data-subject="maths"] {
+  --color-primary: #4ec8f0;
+  --color-primary-hover: #7ad7f4;
+  --color-secondary: #3dd6a3;
+  --color-secondary-hover: #2fbe8e;
+  --color-ring: #4ec8f0;
 }
 
 @layer base {

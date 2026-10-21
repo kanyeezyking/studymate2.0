@@ -42,6 +42,10 @@ export function ScienceApp() {
   const [quizTopic, setQuizTopic] = useState<"all" | string>("all");
 
   useEffect(() => {
+    document.documentElement.dataset.subject = subject;
+  }, [subject]);
+
+  useEffect(() => {
     try {
       const stored = localStorage.getItem(SUBJECT_KEY);
       if (stored === "science" || stored === "maths") setSubject(stored);
@@ -83,7 +87,7 @@ export function ScienceApp() {
             ))}
           </nav>
           <p className="mt-auto pt-8 text-xs text-muted">
-            {counts.notes} {counts.notes === 1 ? "unit" : "note packs"} · {counts.questions} questions
+            {counts.notes} {subject === "maths" ? (counts.notes === 1 ? "unit" : "units") : counts.notes === 1 ? "unit" : "note packs"} · {counts.questions} questions
           </p>
         </aside>
 

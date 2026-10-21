@@ -30,7 +30,9 @@ export type TopicId =
   | "expanding"
   | "factorising"
   | "completedsquare"
-  | "quadraticformula";
+  | "quadraticformula"
+  | "probability"
+  | "measurement";
 
 export type CatStats = { c: number; t: number };
 

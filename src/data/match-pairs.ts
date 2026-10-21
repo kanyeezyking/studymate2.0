@@ -111,4 +111,30 @@ export const MATCH_SETS: { id: TopicId | "mix"; label: string; pairs: MatchPair[
       { term: "Δ < 0", def: "No real x-intercepts" },
     ],
   },
+  {
+    id: "probability",
+    label: "Probability",
+    pairs: [
+      { term: "A ∩ B", def: "And: only the overlap of the two sets" },
+      { term: "A ∪ B", def: "Or: everything in either set, including the overlap" },
+      { term: "A′", def: "Not A: everything in the sample space outside A" },
+      { term: "Addition rule", def: "P(A ∪ B) = P(A) + P(B) − P(A ∩ B)" },
+      { term: "Mutually exclusive", def: "Intersection is empty, so the union is just the sum" },
+      { term: "P(A | B)", def: "P(A ∩ B) / P(B), the overlap divided by the group you were told" },
+      { term: "Independent", def: "P(A | B) = P(A), so the intersection equals the product" },
+    ],
+  },
+  {
+    id: "measurement",
+    label: "Measurement",
+    pairs: [
+      { term: "Cylinder surface area", def: "2πr² + 2πrh" },
+      { term: "Cone volume", def: "⅓πr²h" },
+      { term: "Sphere surface area", def: "4πr²" },
+      { term: "Sphere volume", def: "⁴⁄₃πr³" },
+      { term: "Percentage error", def: "|measured − actual| ÷ actual × 100" },
+      { term: "Limits of accuracy", def: "Half a unit either side of a rounded measurement" },
+    ],
+  },
 ];
+

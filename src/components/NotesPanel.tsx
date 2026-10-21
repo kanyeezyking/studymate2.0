@@ -4,6 +4,7 @@ import { CircuitLab } from "@/components/labs/CircuitLab";
 import { DecayLab } from "@/components/labs/DecayLab";
 import { SankeyLab } from "@/components/labs/SankeyLab";
 import { FeaturesGrid } from "@/components/labs/FeaturesGrid";
+import { SkateLab } from "@/components/labs/SkateLab";
 import { EnergyTools } from "@/components/tools/EnergyTools";
 import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,7 @@ export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => 
         title={subject === "maths" ? "Maths notes" : "Study notes"}
         description={
           subject === "maths"
-            ? "Quadratics as one unit. Learn the features grid first, then the forms underneath."
+            ? "Three units: Quadratics, Probability and Measurement. Each pack is one read-through. The features grid stays with quadratics."
             : "Each pack matches an uploaded file. Open a section, then use the lab at the bottom when it appears."
         }
       />
@@ -127,6 +128,11 @@ export function NotesPanel({ onDrill }: { onDrill?: (topic: TopicId | "all") => 
             <p className="mt-3 text-muted">{active.summary}</p>
 
             {active.id === "quadratics" && <FeaturesGrid />}
+            {active.id === "energy-forms" && (
+              <div className="mt-6">
+                <SkateLab />
+              </div>
+            )}
 
             {active.blocks.map((block) => (
               <section key={block.heading} className="mt-6">

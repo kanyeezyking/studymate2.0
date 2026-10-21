@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { ArrowLeft, Atom, Lightbulb, Spline, Zap } from "lucide-react";
+import { ArrowLeft, Atom, GitBranch, Lightbulb, PersonStanding, Ruler, Spline, Zap } from "lucide-react";
 import { CircuitLab } from "@/components/labs/CircuitLab";
 import { DecayLab } from "@/components/labs/DecayLab";
 import { LightLab, type LightMode } from "@/components/labs/LightLab";
+import { MeasureLab } from "@/components/labs/MeasureLab";
 import { ParabolaLab } from "@/components/labs/ParabolaLab";
+import { ProbabilityLab } from "@/components/labs/ProbabilityLab";
 import { SankeyLab } from "@/components/labs/SankeyLab";
+import { SkateLab } from "@/components/labs/SkateLab";
 import { EnergyTools } from "@/components/tools/EnergyTools";
 import { HalfLifeTool } from "@/components/tools/HalfLifeTool";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
 import { useSubject } from "@/lib/science/subject";
 
-export type LabId = "light" | "circuit" | "sankey" | "decay";
+export type LabId = "light" | "circuit" | "sankey" | "skate" | "decay";
+type MathsLabId = "parabola" | "probability" | "measurement";
 
 const LABS: { id: LabId; title: string; blurb: string; icon: typeof Lightbulb }[] = [
   {
@@ -33,6 +37,12 @@ const LABS: { id: LabId; title: string; blurb: string; icon: typeof Lightbulb }[
     icon: Spline,
   },
   {
+    id: "skate",
+    title: "Skate park",
+    blurb: "Drop the skater. Watch potential, kinetic and thermal trade places, with and without friction.",
+    icon: PersonStanding,
+  },
+  {
     id: "decay",
     title: "Half-life sample",
     blurb: "Watch 64 nuclei decay. Compare the random sample to the (1/2)^n model.",
@@ -40,19 +50,73 @@ const LABS: { id: LabId; title: string; blurb: string; icon: typeof Lightbulb }[
   },
 ];
 
+const MATHS_LABS: { id: MathsLabId; title: string; blurb: string; icon: typeof Spline }[] = [
+  {
+    id: "parabola",
+    title: "Parabola lab",
+    blurb: "Drag a, h and k (or the roots) and watch the parabola move. The formula grid stays in Notes.",
+    icon: Spline,
+  },
+  {
+    id: "probability",
+    title: "Probability lab",
+    blurb: "Fill a Venn diagram, match it to a two-way table, then walk a tree without replacement.",
+    icon: GitBranch,
+  },
+  {
+    id: "measurement",
+    title: "Measurement lab",
+    blurb: "Composite area, the solid formulas, and limits of accuracy. The formulas do not change.",
+    icon: Ruler,
+  },
+];
+
 export function LabsPanel({ initialLab = null }: { initialLab?: LabId | null }) {
   const subject = useSubject();
   const [lab, setLab] = useState<LabId | null>(initialLab);
+  const [mathsLab, setMathsLab] = useState<MathsLabId | null>(null);
 
   if (subject === "maths") {
+    const active = MATHS_LABS.find((item) => item.id === mathsLab);
+    if (!active) {
+      return (
+        <Panel>
+          <PanelTitle
+            kicker="Interactive"
+            title="Maths labs"
+            description="Parabola, probability and measurement. Each lab belongs to its own unit."
+          />
+          <div className="grid gap-3 sm:grid-cols-2">
+            {MATHS_LABS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setMathsLab(item.id)}
+                  className="rounded-[var(--radius-md)] border border-border bg-bg p-5 text-left transition-colors hover:border-primary"
+                >
+                  <Icon className="size-5 text-primary" />
+                  <h3 className="mt-3 font-display text-lg font-bold">{item.title}</h3>
+                  <p className="mt-1 text-sm text-muted">{item.blurb}</p>
+                </button>
+              );
+            })}
+          </div>
+        </Panel>
+      );
+    }
+
     return (
       <Panel>
-        <PanelTitle
-          kicker="Interactive"
-          title="Parabola lab"
-          description="Drag a, h and k (or the roots) and watch the parabola move. The formula grid lives in Notes — these are the numbers for this graph."
-        />
-        <ParabolaLab />
+        <Button variant="ghost" className="mb-4 px-2" onClick={() => setMathsLab(null)}>
+          <ArrowLeft className="size-4" />
+          All labs
+        </Button>
+        <PanelTitle title={active.title} description={active.blurb} />
+        {mathsLab === "parabola" && <ParabolaLab />}
+        {mathsLab === "probability" && <ProbabilityLab />}
+        {mathsLab === "measurement" && <MeasureLab />}
       </Panel>
     );
   }
@@ -65,7 +129,7 @@ export function LabsPanel({ initialLab = null }: { initialLab?: LabId | null }) 
         <PanelTitle
           kicker="Interactive"
           title="Labs"
-          description="Build the picture in your head before the test. Start with the light bench — then circuits, energy and decay."
+          description="Build the picture in your head before the test. Start with the light bench — then circuits, energy, the skate park and decay."
         />
         <div className="grid gap-3 sm:grid-cols-2">
           {LABS.map((item) => {
@@ -103,6 +167,7 @@ export function LabsPanel({ initialLab = null }: { initialLab?: LabId | null }) 
           <EnergyTools />
         </div>
       )}
+      {lab === "skate" && <SkateLab />}
       {lab === "decay" && (
         <div className="space-y-8">
           <DecayLab />
