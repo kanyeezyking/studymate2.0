@@ -5,12 +5,14 @@ import { MatchGame } from "@/components/games/MatchGame";
 import { RadiationRush } from "@/components/games/RadiationRush";
 import { SpectrumSort } from "@/components/games/SpectrumSort";
 import { WeakSpot } from "@/components/games/WeakSpot";
+import { ScopeSelect } from "@/components/ScopeSelect";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
 import { questionsFor } from "@/lib/science/bank";
 import { useSubject } from "@/lib/science/subject";
 import { catNames, topicsFor } from "@/lib/science/topics";
-import type { Question, TopicId } from "@/lib/science/types";
+import type { Question } from "@/lib/science/types";
+import { questionsForScope } from "@/lib/science/units";
 import { shuffle } from "@/lib/utils";
 
 type GameId = "flash" | "sprint" | "match" | "spectrum" | "blitz" | "radiation" | "weak";
@@ -47,7 +49,7 @@ export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null
           title="Study games"
           description={
             subject === "maths"
-              ? "Short loops on the maths units. Weak-spot drill first if you have already sat a quiz."
+              ? "After you have walked through a part in Notes. Weak-spot drill first if you have already sat a quiz."
               : "Short loops that put the Year 9 packs into muscle memory. Weak-spot drill first if you have already sat a quiz."
           }
         />
@@ -93,13 +95,13 @@ export function GamesPanel({ initialGame = null }: { initialGame?: GameId | null
 function Flashcards() {
   const subject = useSubject();
   const topics = topicsFor(subject);
-  const [topic, setTopic] = useState<TopicId | "all">("all");
+  const [topic, setTopic] = useState("all");
   const [cards, setCards] = useState<Question[]>([]);
   const [i, setI] = useState(0);
   const [show, setShow] = useState(false);
 
   function start() {
-    setCards(shuffle(questionsFor(topic, subject)).slice(0, 15));
+    setCards(shuffle(questionsForScope(topic, subject)).slice(0, 15));
     setI(0);
     setShow(false);
   }
@@ -110,18 +112,26 @@ function Flashcards() {
   return (
     <div>
       <div className="flex flex-wrap gap-2">
-        <select
-          className="h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value as TopicId | "all")}
-        >
-          <option value="all">All topics</option>
-          {topics.map((id) => (
-            <option key={id} value={id}>
-              {catNames[id]}
-            </option>
-          ))}
-        </select>
+        {subject === "maths" ? (
+          <ScopeSelect
+            value={topic}
+            onChange={setTopic}
+            className="h-11 min-w-0 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground"
+          />
+        ) : (
+          <select
+            className="h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+          >
+            <option value="all">All topics</option>
+            {topics.map((id) => (
+              <option key={id} value={id}>
+                {catNames[id]}
+              </option>
+            ))}
+          </select>
+        )}
         <Button variant="action" onClick={start}>
           Deal pack
         </Button>

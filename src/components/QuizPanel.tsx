@@ -1,21 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ScopeSelect } from "@/components/ScopeSelect";
 import { Button } from "@/components/ui/button";
 import { Panel, PanelTitle } from "@/components/ui/panel";
-import { questionsFor } from "@/lib/science/bank";
 import { saveQuizResults } from "@/lib/science/store";
 import { useSubject } from "@/lib/science/subject";
 import { catNames, topicsFor } from "@/lib/science/topics";
 import type { Question, TopicId } from "@/lib/science/types";
+import { labelForQuestion, questionsForScope, scopeKeyForTopic } from "@/lib/science/units";
 import { answersMatch, shuffle } from "@/lib/utils";
 
 type QuizItem = Question & { userAns?: string; answered?: boolean };
 
-export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "all" | string }) {
+export function QuizPanel({ initialTopic = "all" }: { initialTopic?: string }) {
   const subject = useSubject();
   const topics = topicsFor(subject);
-  const [topic, setTopic] = useState<TopicId | "all">(
-    initialTopic === "all" ? "all" : (initialTopic as TopicId),
-  );
+  const [scope, setScope] = useState(scopeKeyForTopic(initialTopic));
   const [length, setLength] = useState(10);
   const [exam, setExam] = useState(false);
   const [remain, setRemain] = useState(0);
@@ -28,17 +27,13 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
   submittedRef.current = submitted;
 
   useEffect(() => {
-    if (initialTopic && initialTopic !== "all") setTopic(initialTopic as TopicId);
-  }, [initialTopic]);
+    setScope(scopeKeyForTopic(initialTopic));
+  }, [initialTopic, subject]);
 
-  useEffect(() => {
-    if (topic !== "all" && !topics.includes(topic)) setTopic("all");
-  }, [subject, topics, topic]);
-
-  const available = useMemo(() => questionsFor(topic, subject).length, [topic, subject]);
+  const available = useMemo(() => questionsForScope(scope, subject).length, [scope, subject]);
 
   function start() {
-    const pool = shuffle(questionsFor(topic, subject));
+    const pool = shuffle(questionsForScope(scope, subject));
     const n = Math.min(length, pool.length);
     setItems(pool.slice(0, n).map((q) => ({ ...q, options: q.options ? shuffle(q.options) : q.options })));
     setSubmitted(false);
@@ -86,22 +81,26 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
       <PanelTitle
         kicker="Test"
         title="Smart quizzes"
-        description={`${available} questions in this subject. Results save to Progress. Exam mode adds a clock and auto-submits.`}
+        description={`${available} questions in this pick. Results save to Progress. Exam mode adds a clock and auto-submits.`}
       />
       <div className="flex flex-wrap gap-3">
-        <select
-          className="h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value as TopicId | "all")}
-          aria-label="Quiz topic"
-        >
-          <option value="all">Mix this subject ({questionsFor("all", subject).length})</option>
-          {topics.map((id) => (
-            <option key={id} value={id}>
-              {catNames[id]}
-            </option>
-          ))}
-        </select>
+        {subject === "maths" ? (
+          <ScopeSelect value={scope} onChange={setScope} />
+        ) : (
+          <select
+            className="h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground"
+            value={topics.includes(scope as TopicId) || scope === "all" ? scope : "all"}
+            onChange={(e) => setScope(e.target.value)}
+            aria-label="Quiz topic"
+          >
+            <option value="all">Mix this subject ({questionsForScope("all", subject).length})</option>
+            {topics.map((id) => (
+              <option key={id} value={id}>
+                {catNames[id]}
+              </option>
+            ))}
+          </select>
+        )}
         <select
           className="h-11 rounded-[var(--radius-md)] border border-border bg-bg px-3 text-sm text-foreground"
           value={length}
@@ -150,7 +149,7 @@ export function QuizPanel({ initialTopic = "all" }: { initialTopic?: TopicId | "
                 className="rounded-[var(--radius-md)] border border-border bg-bg p-4 md:p-5"
               >
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                  {catNames[q.cat as TopicId] ?? q.cat}
+                  {subject === "maths" ? labelForQuestion(q) : (catNames[q.cat as TopicId] ?? q.cat)}
                 </span>
                 <p className="mt-2 font-semibold text-foreground">
                   {i + 1}. {q.q}

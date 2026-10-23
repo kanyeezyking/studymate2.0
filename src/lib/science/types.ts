@@ -49,17 +49,21 @@ export type TimetableEvent = {
 export type NoteBlock = {
   heading: string;
   body: string[];
+  /** Maths subdivision id. Science notes omit it. */
+  div?: string;
 };
 
 export type Formula = {
   name: string;
   formula: string;
   note?: string;
+  div?: string;
 };
 
 export type GlossaryItem = {
   term: string;
   def: string;
+  div?: string;
 };
 
 export type NoteSection = {
@@ -72,5 +76,5 @@ export type NoteSection = {
   blocks: NoteBlock[];
   formulas?: Formula[];
   glossary?: GlossaryItem[];
-  worked?: { q: string; a: string }[];
+  worked?: { q: string; a: string; div?: string }[];
 };

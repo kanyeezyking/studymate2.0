@@ -84,7 +84,7 @@ export function LabsPanel({ initialLab = null }: { initialLab?: LabId | null }) 
           <PanelTitle
             kicker="Interactive"
             title="Maths labs"
-            description="Parabola, probability and measurement. Each lab belongs to its own unit."
+            description="One lab for each unit. The notes and quizzes split that unit into parts."
           />
           <div className="grid gap-3 sm:grid-cols-2">
             {MATHS_LABS.map((item) => {
